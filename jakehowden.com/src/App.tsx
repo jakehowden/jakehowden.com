@@ -1,24 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
+import profileImage from './images/jake-cropped.jpg'
+import Summary from './components/summary';
+import Experience from './components/experience';
+import Education from './components/education';
+import Skills from './components/skills';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <img src={profileImage} style={{ width: '150px', height: '125px' }} alt="profile"></img>
+      <Summary></Summary>
+      <Skills></Skills>
+      <Experience></Experience>
+      <Education></Education>
     </div>
   );
 }
