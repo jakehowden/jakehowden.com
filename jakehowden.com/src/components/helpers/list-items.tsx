@@ -6,11 +6,13 @@ interface ListItemsProps {
 
 const ListItems: React.FC<ListItemsProps> = ({ items }) => {
   return (
-    <ul>
-      {items.map((item, index) => (
-        <li key={index}>{item}</li>
-      ))}
-    </ul>
+    <div style={{textAlign: "center"}}>
+      <ul style={{display: "inline-block", textAlign: "left"}}>
+        {items.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
