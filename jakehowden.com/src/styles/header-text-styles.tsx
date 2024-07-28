@@ -1,4 +1,5 @@
 import CSS from 'csstype'
+import { COLORS } from './site-colors';
 
 const headerTextStyles: CSS.Properties = {
   textAlign: "left"
@@ -6,7 +7,8 @@ const headerTextStyles: CSS.Properties = {
 
 const headerInlineTextStyles: CSS.Properties = {
     display: "inline", 
-    textAlign: "left"
+    textAlign: "left",
+    color: COLORS.blackOlive
   };
 
 export {headerInlineTextStyles, headerTextStyles}
