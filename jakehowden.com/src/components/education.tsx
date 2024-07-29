@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
-import { headerInlineTextStyles, headerTextStyles } from '../styles/header-text-styles';
+import './../styles/text.css'
 
 const Education: FC = () => {
   return (
     <div>
-      <h1 style={headerInlineTextStyles}>Education</h1>
-      <h3 style={headerTextStyles}>BSc (Hons) Computer Games Development</h3>
-      <h4 style={headerTextStyles}>University of South Wales</h4>
-      <h5 style={headerTextStyles}>First-Class Honours</h5>
+      <h1 className='HeaderCenterText'>Education</h1>
+      <h3 className='HeaderText'>BSc (Hons) Computer Games Development</h3>
+      <h4 className='HeaderText'>University of South Wales</h4>
+      <h5 className='HeaderText'>First-Class Honours</h5>
     </div>
   );
 };

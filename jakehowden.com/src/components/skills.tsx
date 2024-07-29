@@ -1,12 +1,13 @@
 import { FC } from 'react';
 import SkillsText from './text/skills-text';
-import { headerInlineTextStyles } from '../styles/header-text-styles';
+import './../styles/text.css'
 
 const Skills: FC = () => {
   return (
     <div>
-      <h1 style={headerInlineTextStyles}>Skills</h1>
-      <p>{SkillsText}</p>
+      <h1 className='HeaderCenterText'>Skills</h1>
+      <p className='Skill'>{SkillsText}</p>
+      <br></br>
     </div>
   );
 };

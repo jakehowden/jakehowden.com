@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import ListItems from './helpers/list-items';
 import ListSkills from './helpers/list-skills';
-import { headerInlineTextStyles, headerTextStyles } from '../styles/header-text-styles';
+import './../styles/text.css'
 
 interface ExperienceItemProps {
     company: string;
@@ -15,12 +15,13 @@ const ExperienceItem: FC<ExperienceItemProps> = ({company, position, location, s
   return (
     <div>
       <div>
-        <h3 style={headerInlineTextStyles}>{company} | </h3>
-        <h4 style={headerInlineTextStyles}>{position} | </h4>
-        <h5 style={headerInlineTextStyles}>{location}</h5>
+        <h3 className='HeaderInlineText'>{company} | </h3>
+        <h4 className='HeaderInlineText'>{position} | </h4>
+        <h5 className='HeaderInlineText'>{location}</h5>
       </div>
-      <h5 style={headerTextStyles}><ListSkills skills={skills}/></h5>
+      <h5 className='HeaderText'><ListSkills skills={skills}/></h5>
       <ListItems items={details}/>
+      <br></br>
     </div>
   );
 };

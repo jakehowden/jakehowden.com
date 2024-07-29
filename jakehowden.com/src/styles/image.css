@@ -1,0 +1,15 @@
+.HeaderImage {
+  width: 150px; 
+  height: 125px; 
+  border-radius: 10px;
+  padding: 5px;
+  float: right;
+}
+
+.LogoImage {
+  width: 25px; 
+  height: 25px;
+  padding: 5px;
+  display: inline;
+  float: left;
+}

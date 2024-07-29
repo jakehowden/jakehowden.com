@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
 import SummaryText from './text/summary-text';
-import { headerInlineTextStyles } from '../styles/header-text-styles';
+import './../styles/text.css'
 
 const Summary: FC = () => {
   return (
     <div>
-      <h1 style={headerInlineTextStyles}>Summary</h1>
-      <p>{SummaryText}</p>
+      <h1 className='HeaderCenterText'>Summary</h1>
+      <p className='Text'>{SummaryText}</p>
+      <br></br>
     </div>
   );
 };
