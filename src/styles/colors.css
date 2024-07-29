@@ -1,13 +1,13 @@
 :root {
-    --black-olive: #212922;
+  --black-olive: #212922;
 
-    --primary-color: #294936;
-    
-    --feldgrau: #3E6259;
-    
-    --secondary-color: #5B8266;
+  --primary-color: #294936;
 
-    --text-color: #F5F1ED;
+  --feldgrau: #3e6259;
 
-    --secondary-text-color: #E6E2DE;
+  --secondary-color: #5b8266;
+
+  --text-color: #f5f1ed;
+
+  --secondary-text-color: #e6e2de;
 }

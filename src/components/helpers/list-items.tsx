@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface ListItemsProps {
   items: string[];
@@ -7,7 +7,7 @@ interface ListItemsProps {
 const ListItems: React.FC<ListItemsProps> = ({ items }) => {
   return (
     <div>
-      <ul className='Text'>
+      <ul className="Text">
         {items.map((item, index) => (
           <li key={index}>{item}</li>
         ))}

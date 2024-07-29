@@ -1,15 +1,29 @@
 .HeaderImage {
-  width: 150px; 
-  height: 125px; 
+  width: 150px;
+  height: 125px;
   border-radius: 10px;
   padding: 5px;
   float: right;
 }
 
 .LogoImage {
-  width: 25px; 
+  width: 25px;
   height: 25px;
   padding: 5px;
   display: inline;
   float: left;
+}
+
+.GridImage {
+  width: 150px;
+  height: 150px;
+  padding: 25px;
+  display: inline;
+  float: center;
+  transform: scale(1, 1);
+  transition: 1s;
+}
+
+.GridImage:hover {
+  transform: scale(1.2, 1.2);
 }
