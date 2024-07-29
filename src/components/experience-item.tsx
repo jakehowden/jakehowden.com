@@ -14,12 +14,12 @@ interface ExperienceItemProps {
 const ExperienceItem: FC<ExperienceItemProps> = ({company, position, location, skills, details}) => {
   return (
     <div>
-      <div>
-        <h3 className='HeaderInlineText'>{company} | </h3>
-        <h4 className='HeaderInlineText'>{position} | </h4>
-        <h5 className='HeaderInlineText'>{location}</h5>
+      <div style={{textAlign: "center"}}>
+        <h4 className='HeaderInlineText'>{company} ·</h4>
+        <h4 className='HeaderInlineText'>{position} ·</h4>
+        <h4 className='HeaderInlineText'>{location}</h4>
       </div>
-      <h5 className='HeaderText'><ListSkills skills={skills}/></h5>
+      <ListSkills skills={skills}/>
       <ListItems items={details}/>
       <br></br>
     </div>

@@ -6,7 +6,11 @@ interface ListSkillsProps {
 
 const ListSkills: React.FC<ListSkillsProps> = ({ skills }) => {
   return (
-    <p>{skills.join(" | ")}</p>
+    <div>
+      {skills.map((skill, index) => (
+        <p className='Skill' key={index}>{skill}</p>
+      ))}
+    </div>
   );
 };
 

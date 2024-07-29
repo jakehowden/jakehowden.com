@@ -2,4 +2,6 @@
 
 .App {
   background-color: var(--primary-color);
+  width: 50%;
+  margin: auto;
 }
