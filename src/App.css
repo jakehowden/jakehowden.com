@@ -1,7 +1,19 @@
-@import "./styles/colors.css";
+@import './globals.css';
 
 .App {
   background-color: var(--primary-color);
   width: 50%;
   margin: auto;
+}
+
+.section {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
 }

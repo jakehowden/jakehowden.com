@@ -1,0 +1,69 @@
+.tech-stack-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-color);
+}
+
+.tech-stack-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.tech-stack-images {
+  width: 60%;
+}
+
+.tech-stack-text {
+  width: 40%;
+  display: flex; /* Added flex to allow internal centering */
+  flex-direction: column; /* Stack the text elements vertically */
+  justify-content: center; /* Center the text elements */
+}
+
+.section {
+  margin-bottom: 20px;
+  width: 100%; /* Adjusted to fill the width of the parent */
+}
+
+.image-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.section img {
+  max-width: 20%;
+  margin-right: 20px;
+  height: auto;
+  transform: scale(1, 1);
+  transition: 1s;
+  filter: drop-shadow(0 0 3px var(--secondary-color));
+}
+
+.section img:hover {
+  transform: scale(1.2, 1.2);
+  filter: drop-shadow(0 0 10px var(--secondary-color));
+}
+
+.arrow-container {
+  display: flex;
+  justify-content: center;
+  animation: Bobbing 2s infinite;
+  margin-top: 20px;
+}
+
+.arrow {
+  width: 50px;
+  cursor: pointer;
+}
+
+@keyframes Bobbing {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}

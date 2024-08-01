@@ -1,19 +1,20 @@
-import React from "react";
+import React from 'react'
+import './careers.css'
 
 interface ListSkillsProps {
-  skills: string[];
+  skills: string[]
 }
 
 const ListSkills: React.FC<ListSkillsProps> = ({ skills }) => {
   return (
-    <div>
+    <div className='skills-container'>
       {skills.map((skill, index) => (
-        <p className="Skill" key={index}>
+        <p className='skill' key={index}>
           {skill}
         </p>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default ListSkills;
+export default ListSkills

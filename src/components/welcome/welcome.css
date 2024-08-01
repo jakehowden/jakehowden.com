@@ -1,0 +1,48 @@
+.WelcomeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.Info {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.HeadshotContainer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.Headshot {
+  width: 150px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.ArrowContainer {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.Arrow {
+  width: 50px;
+  transform: rotate(90deg);
+  animation: Bobbing 2s infinite;
+  cursor: pointer;
+}
+
+@keyframes Bobbing {
+  0%,
+  100% {
+    transform: translateY(0) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(90deg);
+  }
+}
