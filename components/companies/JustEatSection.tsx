@@ -1,9 +1,12 @@
-﻿import React from 'react'
+﻿'use client'
+
+import React from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import useIsMobile from './../../hooks/useIsMobile'
-import { getListContainerVariants, getListItemVariants } from './../../animations/variants'
+import useIsMobile from '../../hooks/useIsMobile'
+import { getListContainerVariants, getListItemVariants } from '../../animations/variants'
 import './company-section.css'
-import justEatLogo from './../../images/justeattakeaway.png'
+
+const justEatLogo = '/images/justeattakeaway.png'
 
 const JustEatSection: React.FC = () => {
   const disableAnimations = useReducedMotion() || useIsMobile(768)

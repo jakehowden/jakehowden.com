@@ -1,9 +1,12 @@
-﻿import React from 'react'
+﻿'use client'
+
+import React from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import useIsMobile from './../../hooks/useIsMobile'
-import { getListContainerVariants, getListItemVariants } from './../../animations/variants'
+import useIsMobile from '../../hooks/useIsMobile'
+import { getListContainerVariants, getListItemVariants } from '../../animations/variants'
 import './company-section.css'
-import newparkLogo from './../../images/newpark-solutions.png'
+
+const newparkLogo = '/images/newpark-solutions.png'
 
 const NewparkSection: React.FC = () => {
   const disableAnimations = useReducedMotion() || useIsMobile(768)
@@ -23,16 +26,16 @@ const NewparkSection: React.FC = () => {
         </div>
         <div className='achievements'>
           <motion.ul variants={listContainer} initial='hidden' animate='visible'>
-            <li>
+            <motion.li variants={listItem}>
               Directed a full redesign of the parking payment app, coordinating product, design, and engineering across
               release cycles.
-            </li>
-            <li>
+            </motion.li>
+            <motion.li variants={listItem}>
               Led customer support and QA teams, instituting feedback loops that tightened defect triage and response
               times.
-            </li>
-            <li>Maintained and extended backend web services to onboard new municipal clients and payment features.</li>
-            <li>Raised the app store rating from 1.52 to 4+, improving brand perception and retention.</li>
+            </motion.li>
+            <motion.li variants={listItem}>Maintained and extended backend web services to onboard new municipal clients and payment features.</motion.li>
+            <motion.li variants={listItem}>Raised the app store rating from 1.52 to 4+, improving brand perception and retention.</motion.li>
           </motion.ul>
         </div>
         <div className='role-info earlier-role'>

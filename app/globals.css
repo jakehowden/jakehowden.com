@@ -1,9 +1,22 @@
+:root {
+  --primary-color: #273158;
+  --secondary-color: #698996;
+  --text-color: #f2f3d9;
+  --dark-blue: #030027;
+  --teal: #407076;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Work Sans, sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--primary-color);
+  color: var(--text-color);
 }
 
 code {

@@ -1,17 +1,19 @@
+'use client'
+
 import React, { useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import useIsMobile from './hooks/useIsMobile'
-import { getSectionVariants } from './animations/variants'
-import Intro from './components/intro/Intro'
-import Education from './components/education/education'
-import JustEatSection from './components/companies/JustEatSection'
-import EnsonoSection from './components/companies/EnsonoSection'
-import TytonicalSection from './components/companies/TytonicalSection'
-import NewparkSection from './components/companies/NewparkSection'
-import SectionNavigation from './components/SectionNavigation'
-import './App.css'
+import useIsMobile from '../hooks/useIsMobile'
+import { getSectionVariants } from '../animations/variants'
+import Intro from '../components/intro/Intro'
+import Education from '../components/education/education'
+import JustEatSection from '../components/companies/JustEatSection'
+import EnsonoSection from '../components/companies/EnsonoSection'
+import TytonicalSection from '../components/companies/TytonicalSection'
+import NewparkSection from '../components/companies/NewparkSection'
+import SectionNavigation from '../components/SectionNavigation'
+import './app.css'
 
-function App() {
+export default function Home() {
   const [currentSection, setCurrentSection] = useState('intro')
   const prefersReducedMotion = useReducedMotion()
   const isMobile = useIsMobile(768)
@@ -37,7 +39,7 @@ function App() {
             animate='visible'
             exit='exit'
           >
-            <Intro></Intro>
+            <Intro />
           </motion.div>
         )}
         {currentSection === 'just-eat' && (
@@ -49,7 +51,7 @@ function App() {
             animate='visible'
             exit='exit'
           >
-            <JustEatSection></JustEatSection>
+            <JustEatSection />
           </motion.div>
         )}
         {currentSection === 'ensono' && (
@@ -61,7 +63,7 @@ function App() {
             animate='visible'
             exit='exit'
           >
-            <EnsonoSection></EnsonoSection>
+            <EnsonoSection />
           </motion.div>
         )}
         {currentSection === 'tytonical' && (
@@ -73,7 +75,7 @@ function App() {
             animate='visible'
             exit='exit'
           >
-            <TytonicalSection></TytonicalSection>
+            <TytonicalSection />
           </motion.div>
         )}
         {currentSection === 'newpark' && (
@@ -85,7 +87,7 @@ function App() {
             animate='visible'
             exit='exit'
           >
-            <NewparkSection></NewparkSection>
+            <NewparkSection />
           </motion.div>
         )}
         {currentSection === 'education' && (
@@ -97,12 +99,10 @@ function App() {
             animate='visible'
             exit='exit'
           >
-            <Education></Education>
+            <Education />
           </motion.div>
         )}
       </AnimatePresence>
     </div>
   )
 }
-
-export default App
