@@ -1,43 +1,106 @@
 import React, { useState } from 'react'
-import CareerTimeline from './components/career/career-timeline'
-import TechStack from './components/techStack/tech-stack'
-import Welcome from './components/welcome/welcome'
-import arrowImage from './images/arrow.svg'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import useIsMobile from './hooks/useIsMobile'
+import { getSectionVariants } from './animations/variants'
+import Intro from './components/intro/Intro'
+import Education from './components/education/education'
+import JustEatSection from './components/companies/JustEatSection'
+import EnsonoSection from './components/companies/EnsonoSection'
+import TytonicalSection from './components/companies/TytonicalSection'
+import NewparkSection from './components/companies/NewparkSection'
+import SectionNavigation from './components/SectionNavigation'
 import './App.css'
 
 function App() {
-  const sections = ['welcome', 'tech-stack', 'career', 'education'] // Add more sections as needed
-  const [currentSectionIndex, setCurrentSectionIndex] = useState(0)
+  const [currentSection, setCurrentSection] = useState('intro')
+  const prefersReducedMotion = useReducedMotion()
+  const isMobile = useIsMobile(768)
+  const disableAnimations = prefersReducedMotion || isMobile
+  const sectionVariants = getSectionVariants(disableAnimations)
 
-  // Function to navigate to the next section
-  const goToNextSection = () => {
-    setCurrentSectionIndex((prevIndex) => (prevIndex + 1) % sections.length)
-  }
+  const sections = ['intro', 'just-eat', 'ensono', 'tytonical', 'newpark', 'education']
 
-  // Function to navigate to the previous section
-  const goToPreviousSection = () => {
-    setCurrentSectionIndex((prevIndex) => (prevIndex - 1 + sections.length) % sections.length)
+  const goToSection = (section: string) => {
+    setCurrentSection(section)
   }
 
   return (
     <div className='App'>
-      {sections.map((section, index) => (
-        <div key={section} className={`section ${index === currentSectionIndex ? 'visible' : 'hidden'}`}>
-          {section === 'welcome' && <Welcome />}
-          {section === 'tech-stack' && <TechStack />}
-          {section === 'career' && <CareerTimeline />}
-          {index !== 0 && (
-            <div className='ArrowContainer' onClick={goToPreviousSection}>
-              <img src={arrowImage} alt='upward arrow' className='Arrow' />
-            </div>
-          )}
-          {index !== sections.length - 1 && (
-            <div className='ArrowContainer' onClick={goToNextSection}>
-              <img src={arrowImage} alt='downward arrow' className='Arrow' />
-            </div>
-          )}
-        </div>
-      ))}
+      <SectionNavigation sections={sections} currentSection={currentSection} onNavigate={goToSection} />
+      <AnimatePresence mode='wait'>
+        {currentSection === 'intro' && (
+          <motion.div
+            key='intro'
+            className='section visible'
+            variants={sectionVariants}
+            initial='hidden'
+            animate='visible'
+            exit='exit'
+          >
+            <Intro></Intro>
+          </motion.div>
+        )}
+        {currentSection === 'just-eat' && (
+          <motion.div
+            key='just-eat'
+            className='section visible'
+            variants={sectionVariants}
+            initial='hidden'
+            animate='visible'
+            exit='exit'
+          >
+            <JustEatSection></JustEatSection>
+          </motion.div>
+        )}
+        {currentSection === 'ensono' && (
+          <motion.div
+            key='ensono'
+            className='section visible'
+            variants={sectionVariants}
+            initial='hidden'
+            animate='visible'
+            exit='exit'
+          >
+            <EnsonoSection></EnsonoSection>
+          </motion.div>
+        )}
+        {currentSection === 'tytonical' && (
+          <motion.div
+            key='tytonical'
+            className='section visible'
+            variants={sectionVariants}
+            initial='hidden'
+            animate='visible'
+            exit='exit'
+          >
+            <TytonicalSection></TytonicalSection>
+          </motion.div>
+        )}
+        {currentSection === 'newpark' && (
+          <motion.div
+            key='newpark'
+            className='section visible'
+            variants={sectionVariants}
+            initial='hidden'
+            animate='visible'
+            exit='exit'
+          >
+            <NewparkSection></NewparkSection>
+          </motion.div>
+        )}
+        {currentSection === 'education' && (
+          <motion.div
+            key='education'
+            className='section visible'
+            variants={sectionVariants}
+            initial='hidden'
+            animate='visible'
+            exit='exit'
+          >
+            <Education></Education>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

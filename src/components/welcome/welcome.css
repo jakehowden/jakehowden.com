@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  padding: 0 8px;
 }
 
 .Info {
@@ -23,26 +24,33 @@
   border-radius: 5px;
 }
 
-.ArrowContainer {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
 }
 
-.Arrow {
-  width: 50px;
-  transform: rotate(90deg);
-  animation: Bobbing 2s infinite;
+.social-icon {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
   cursor: pointer;
+  filter: brightness(0) invert(1);
 }
 
-@keyframes Bobbing {
-  0%,
-  100% {
-    transform: translateY(0) rotate(90deg);
+.social-icon:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .Headshot {
+    width: 120px;
   }
-  50% {
-    transform: translateY(-20px) rotate(90deg);
+
+  .social-icon {
+    width: 35px;
+    height: 35px;
   }
 }
