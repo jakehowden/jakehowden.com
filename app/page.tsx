@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import useIsMobile from '../hooks/useIsMobile'
 import { getSectionVariants } from '../animations/variants'
 import Intro from '../components/intro/Intro'
+import TechStack from '../components/techStack/TechStack'
 import Education from '../components/education/education'
 import JustEatSection from '../components/companies/JustEatSection'
 import EnsonoSection from '../components/companies/EnsonoSection'
@@ -20,7 +21,7 @@ export default function Home() {
   const disableAnimations = prefersReducedMotion || isMobile
   const sectionVariants = getSectionVariants(disableAnimations)
 
-  const sections = ['intro', 'just-eat', 'ensono', 'tytonical', 'newpark', 'education']
+  const sections = ['intro', 'tech-stack', 'just-eat', 'ensono', 'tytonical', 'newpark', 'education']
 
   const goToSection = (section: string) => {
     setCurrentSection(section)
@@ -40,6 +41,18 @@ export default function Home() {
             exit='exit'
           >
             <Intro />
+          </motion.div>
+        )}
+        {currentSection === 'tech-stack' && (
+          <motion.div
+            key='tech-stack'
+            className='section visible'
+            variants={sectionVariants}
+            initial='hidden'
+            animate='visible'
+            exit='exit'
+          >
+            <TechStack />
           </motion.div>
         )}
         {currentSection === 'just-eat' && (

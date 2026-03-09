@@ -1,0 +1,85 @@
+.section-nav {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-nav.sidebar-right,
+.section-nav.sidebar-left {
+  bottom: 24px;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+}
+
+.section-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  font-size: 13px;
+  text-transform: capitalize;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  position: relative;
+  border-radius: 24px;
+}
+
+.section-button:hover {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.section-button.active {
+  color: white;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.section-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.section-button:hover .section-dot {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.section-button.active .section-dot {
+  background: white;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  width: 8px;
+  height: 8px;
+}
+
+@media (max-width: 768px) {
+  .section-nav {
+    bottom: 12px;
+    padding: 12px 16px;
+    gap: 8px;
+    border-radius: 50px;
+  }
+
+  .section-button {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+}

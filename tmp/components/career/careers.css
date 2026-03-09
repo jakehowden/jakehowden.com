@@ -1,0 +1,65 @@
+.CareerTimeline .timeline-entry {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.CareerTimeline .timeline-date {
+  flex-basis: 20%;
+  text-align: right;
+  padding-right: 10px;
+  color: var(--text-color);
+}
+
+.CareerTimeline .timeline-divider {
+  position: absolute;
+  left: calc(20% + 10px);
+  width: 2px;
+  bottom: 0;
+  top: 0;
+  background-color: var(--secondary-color);
+}
+
+.CareerTimeline .timeline-info {
+  flex-basis: 75%;
+  flex-grow: 1;
+  padding-left: 20px;
+  overflow-wrap: break-word;
+}
+
+.CareerTimeline .company-name {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.CareerTimeline .position {
+  margin-top: 5px;
+  color: var(--text-color);
+}
+
+.CareerTimeline .description {
+  margin-top: 10px;
+  color: var(--text-color);
+}
+
+.CareerTimeline .skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: start;
+}
+
+.CareerTimeline .skill {
+  text-align: center;
+  padding: 5px 10px;
+  color: var(--text-color);
+  border: 1px solid;
+  border-radius: 15px;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.CareerTimeline .skill:hover {
+  background-color: var(--secondary-color);
+}
