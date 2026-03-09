@@ -6,7 +6,8 @@ import useIsMobile from '../../hooks/useIsMobile'
 import { getListContainerVariants, getListItemVariants } from '../../animations/variants'
 import './company-section.css'
 
-const justEatLogo = '/images/justeattakeaway.png'
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+const justEatLogo = `${basePath}/images/justeattakeaway.png`
 
 const JustEatSection: React.FC = () => {
   const disableAnimations = useReducedMotion() || useIsMobile(768)

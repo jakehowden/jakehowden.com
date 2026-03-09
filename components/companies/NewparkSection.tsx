@@ -6,7 +6,8 @@ import useIsMobile from '../../hooks/useIsMobile'
 import { getListContainerVariants, getListItemVariants } from '../../animations/variants'
 import './company-section.css'
 
-const newparkLogo = '/images/newpark-solutions.png'
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+const newparkLogo = `${basePath}/images/newpark-solutions.png`
 
 const NewparkSection: React.FC = () => {
   const disableAnimations = useReducedMotion() || useIsMobile(768)

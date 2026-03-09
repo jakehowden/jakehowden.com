@@ -66,21 +66,6 @@ const SectionNavigation: React.FC<SectionNavigationProps> = ({ sections, current
         </div>
       </div>
 
-      {/* Bottom pill nav bar */}
-      <nav className='section-nav'>
-        {sections.map((section) => (
-          <button
-            key={section}
-            className={`section-button ${currentSection === section ? 'active' : ''}`}
-            onClick={() => onNavigate(section)}
-            aria-label={`Go to ${section.replace(/-/g, ' ')}`}
-            title={section.replace(/-/g, ' ')}
-          >
-            <span className='section-label'>{section.replace(/-/g, ' ')}</span>
-            <span className='section-dot'></span>
-          </button>
-        ))}
-      </nav>
     </>
   )
 }

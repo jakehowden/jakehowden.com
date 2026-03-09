@@ -6,7 +6,8 @@ import useIsMobile from '../../hooks/useIsMobile'
 import { getListContainerVariants, getListItemVariants } from '../../animations/variants'
 import './company-section.css'
 
-const tytonicalLogo = '/images/tytonical.png'
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+const tytonicalLogo = `${basePath}/images/tytonical.png`
 
 const TytonicalSection: React.FC = () => {
   const disableAnimations = useReducedMotion() || useIsMobile(768)

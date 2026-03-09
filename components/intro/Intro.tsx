@@ -3,6 +3,8 @@
 import React from 'react'
 import './intro.css'
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+
 const Intro: React.FC = () => {
   return (
     <div className='intro-container'>
@@ -10,7 +12,7 @@ const Intro: React.FC = () => {
         <h1>Jake Howden</h1>
 
         <div className='HeadshotContainer'>
-          <img src='/images/jake.jpg' alt='Headshot of Jake Howden' className='Headshot' />
+          <img src={`${basePath}/images/jake.jpg`} alt='Headshot of Jake Howden' className='Headshot' />
         </div>
 
         <h2>Software Engineer</h2>
@@ -19,7 +21,7 @@ const Intro: React.FC = () => {
 
         <div className='social-links'>
           <a href='https://github.com/jakehowden' target='_blank' rel='noopener noreferrer' aria-label='GitHub'>
-            <img src='/images/github-logo.png' alt='GitHub' className='social-icon' />
+            <img src={`${basePath}/images/github-logo.png`} alt='GitHub' className='social-icon' />
           </a>
           <a
             href='https://www.linkedin.com/in/jake-howden/'
@@ -27,7 +29,7 @@ const Intro: React.FC = () => {
             rel='noopener noreferrer'
             aria-label='LinkedIn'
           >
-            <img src='/images/linkedin-logo.png' alt='LinkedIn' className='social-icon' />
+            <img src={`${basePath}/images/linkedin-logo.png`} alt='LinkedIn' className='social-icon' />
           </a>
         </div>
 
