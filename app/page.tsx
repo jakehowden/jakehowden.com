@@ -12,6 +12,7 @@ import EnsonoSection from '../components/companies/EnsonoSection'
 import TytonicalSection from '../components/companies/TytonicalSection'
 import NewparkSection from '../components/companies/NewparkSection'
 import SectionNavigation from '../components/SectionNavigation'
+import FloatingParticles from '../components/FloatingParticles'
 import './app.css'
 
 export default function Home() {
@@ -30,6 +31,7 @@ export default function Home() {
   return (
     <div className='App'>
       <SectionNavigation sections={sections} currentSection={currentSection} onNavigate={goToSection} />
+      <FloatingParticles />
       <AnimatePresence mode='wait'>
         {currentSection === 'intro' && (
           <motion.div

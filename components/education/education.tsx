@@ -1,13 +1,55 @@
-import React, { FC } from 'react'
+'use client'
 
-const Education: FC = () => {
+import React from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
+import useIsMobile from '../../hooks/useIsMobile'
+import { getListContainerVariants, getListItemVariants } from '../../animations/variants'
+import '../companies/company-section.css'
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+const uswLogo = `${basePath}/images/USW.jpg`
+
+const Education: React.FC = () => {
+  const disableAnimations = useReducedMotion() || useIsMobile(768)
+  const listContainer = getListContainerVariants(disableAnimations)
+  const listItem = getListItemVariants(disableAnimations)
+
   return (
-    <div>
-      <h1 className='HeaderCenterText'>Education</h1>
-      <div style={{ textAlign: 'center' }}>
-        <h3 className='HeaderText'>BSc (Hons) Computer Games Development</h3>
-        <h4 className='HeaderInlineText'>University of South Wales</h4>
-        <h4 className='HeaderInlineText'>First-Class Honours</h4>
+    <div className='company-section education-section'>
+      <div className='company-header'>
+        <img src={uswLogo} alt='University of South Wales' className='company-logo' />
+        <h1>University of South Wales</h1>
+        <p className='location'>Pontypridd, Wales</p>
+      </div>
+      <div className='company-content'>
+        <div className='role-info'>
+          <h2>BSc (Hons) Computer Games Development</h2>
+          <p className='dates'>2018 — 2021</p>
+        </div>
+        <div className='achievements'>
+          <motion.ul variants={listContainer} initial='hidden' animate='visible'>
+            <motion.li variants={listItem}>
+              Graduated with First-Class Honours.
+            </motion.li>
+            <motion.li variants={listItem}>
+              Specialised in software engineering, game engine architecture, and real-time systems.
+            </motion.li>
+            <motion.li variants={listItem}>
+              Developed a multiplayer networked game engine in C++ as a final-year project.
+            </motion.li>
+          </motion.ul>
+        </div>
+        <div className='tech-used'>
+          <h3>Key Subjects</h3>
+          <div className='tech-tags'>
+            <span className='tech-tag'>C++</span>
+            <span className='tech-tag'>C#</span>
+            <span className='tech-tag'>Game Engine Architecture</span>
+            <span className='tech-tag'>Networking</span>
+            <span className='tech-tag'>Graphics Programming</span>
+            <span className='tech-tag'>AI & Pathfinding</span>
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -1,0 +1,48 @@
+.particles-side {
+  position: fixed;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particles-left {
+  left: 0;
+}
+
+.particles-right {
+  right: 0;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(150, 180, 220, 0.8);
+  animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-15vh) translateX(var(--drift));
+  }
+  50% {
+    transform: translateY(-30vh) translateX(calc(var(--drift) * -0.5));
+  }
+  75% {
+    transform: translateY(-45vh) translateX(var(--drift));
+  }
+  100% {
+    transform: translateY(-60vh) translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .particles-side {
+    width: 50px;
+  }
+}
