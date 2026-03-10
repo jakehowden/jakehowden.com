@@ -27,11 +27,14 @@ jobs:
 
       - run: npm ci
 
-      - uses: actions/configure-pages@v5
+      - id: configure
+        uses: actions/configure-pages@v5
         with:
           static_site_generator: next
 
       - run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.configure.outputs.base_path }}
 
       - uses: actions/upload-pages-artifact@v3
         with:
