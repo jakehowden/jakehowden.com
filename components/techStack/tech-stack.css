@@ -62,14 +62,14 @@
   width: 100px;
   height: auto;
   transition: transform 0.4s ease, filter 0.4s ease;
-  filter: brightness(0) saturate(100%) invert(66%) sepia(10%) saturate(933%) hue-rotate(147deg) brightness(91%)
-    contrast(86%);
+  filter: brightness(0) saturate(100%) invert(62%) sepia(15%) saturate(600%) hue-rotate(345deg) brightness(90%)
+    contrast(88%);
 }
 
 .tech-item:hover .tech-icon {
   transform: translateY(-10px);
-  filter: brightness(0) saturate(100%) invert(66%) sepia(10%) saturate(933%) hue-rotate(147deg) brightness(110%)
-    contrast(86%) drop-shadow(0 0 15px rgba(105, 137, 150, 0.8));
+  filter: brightness(0) saturate(100%) invert(62%) sepia(15%) saturate(600%) hue-rotate(345deg) brightness(115%)
+    contrast(88%) drop-shadow(0 0 15px rgba(176, 141, 110, 0.8));
 }
 
 .tech-label {
@@ -102,7 +102,7 @@
 .tech-badge:hover {
   background-color: var(--secondary-color);
   transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(105, 137, 150, 0.3);
+  box-shadow: 0 4px 8px rgba(176, 141, 110, 0.3);
 }
 
 /* Responsive */

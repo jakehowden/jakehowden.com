@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <div className='App'>
       <SectionNavigation sections={sections} currentSection={currentSection} onNavigate={goToSection} />
-      <FloatingParticles />
+      <FloatingParticles currentSection={currentSection} />
       <AnimatePresence mode='wait'>
         {currentSection === 'intro' && (
           <motion.div

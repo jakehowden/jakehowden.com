@@ -14,6 +14,20 @@ type Particle = {
   drift: number
 }
 
+type FloatingParticlesProps = {
+  currentSection: string
+}
+
+const sectionColors: Record<string, string> = {
+  intro: '#d4a574',
+  'tech-stack': '#b08d6e',
+  'just-eat': '#ff8000',
+  ensono: '#8b6cc1',
+  tytonical: '#dcbf79',
+  newpark: '#26afe3',
+  education: '#e8354f',
+}
+
 function seededRandom(seed: number) {
   let s = seed
   return () => {
@@ -22,64 +36,48 @@ function seededRandom(seed: number) {
   }
 }
 
-const FloatingParticles: React.FC = () => {
+const FloatingParticles: React.FC<FloatingParticlesProps> = ({ currentSection }) => {
   const particles = useMemo(() => {
     const rand = seededRandom(42)
     const result: Particle[] = []
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 60; i++) {
       result.push({
         id: i,
-        x: rand() * 160,
+        x: rand() * 100,
         y: rand() * 100,
-        size: 2 + rand() * 3,
-        opacity: 0.04 + rand() * 0.1,
-        duration: 20 + rand() * 25,
+        size: 3 + rand() * 5,
+        opacity: 0.08 + rand() * 0.12,
+        duration: 18 + rand() * 22,
         delay: rand() * -30,
-        drift: 5 + rand() * 15,
+        drift: 10 + rand() * 30,
       })
     }
     return result
   }, [])
 
+  const color = sectionColors[currentSection] ?? sectionColors.intro
+
   return (
-    <>
-      <div className='particles-side particles-left' aria-hidden='true'>
-        {particles.slice(0, 20).map((p) => (
-          <div
-            key={p.id}
-            className='particle'
-            style={{
-              left: `${p.x}px`,
-              top: `${p.y}%`,
-              width: `${p.size}px`,
-              height: `${p.size}px`,
-              opacity: p.opacity,
-              animationDuration: `${p.duration}s`,
-              animationDelay: `${p.delay}s`,
-              '--drift': `${p.drift}px`,
-            } as React.CSSProperties}
-          />
-        ))}
-      </div>
-      <div className='particles-side particles-right' aria-hidden='true'>
-        {particles.slice(20).map((p) => (
-          <div
-            key={p.id}
-            className='particle'
-            style={{
-              right: `${p.x}px`,
-              top: `${p.y}%`,
-              width: `${p.size}px`,
-              height: `${p.size}px`,
-              opacity: p.opacity,
-              animationDuration: `${p.duration}s`,
-              animationDelay: `${p.delay}s`,
-              '--drift': `${p.drift}px`,
-            } as React.CSSProperties}
-          />
-        ))}
-      </div>
-    </>
+    <div className='particles-container' aria-hidden='true'>
+      {particles.map((p) => (
+        <div
+          key={p.id}
+          className='particle'
+          style={{
+            left: `${p.x}%`,
+            top: `${p.y}%`,
+            width: `${p.size}px`,
+            height: `${p.size}px`,
+            opacity: p.opacity,
+            backgroundColor: color,
+            boxShadow: `0 0 ${p.size * 2}px ${color}`,
+            animationDuration: `${p.duration}s`,
+            animationDelay: `${p.delay}s`,
+            '--drift': `${p.drift}px`,
+          } as React.CSSProperties}
+        />
+      ))}
+    </div>
   )
 }
 

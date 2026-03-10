@@ -1,26 +1,19 @@
-.particles-side {
+.particles-container {
   position: fixed;
   top: 0;
-  width: 200px;
+  left: 0;
+  width: 100%;
   height: 100%;
   z-index: 1;
   pointer-events: none;
   overflow: hidden;
 }
 
-.particles-left {
-  left: 0;
-}
-
-.particles-right {
-  right: 0;
-}
-
 .particle {
   position: absolute;
   border-radius: 50%;
-  background: rgba(150, 180, 220, 0.8);
   animation: particleFloat linear infinite;
+  transition: background-color 0.8s ease, box-shadow 0.8s ease;
 }
 
 @keyframes particleFloat {
@@ -42,7 +35,7 @@
 }
 
 @media (max-width: 768px) {
-  .particles-side {
-    width: 50px;
+  .particle:nth-child(n + 35) {
+    display: none;
   }
 }
