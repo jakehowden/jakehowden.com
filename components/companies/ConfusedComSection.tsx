@@ -1,17 +1,12 @@
 'use client'
 
 import React from 'react'
-import { useReducedMotion } from 'framer-motion'
-import useIsMobile from '../../hooks/useIsMobile'
 import './company-section.css'
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 const confusedComLogo = `${basePath}/images/confused-com.svg`
 
 const ConfusedComSection: React.FC = () => {
-  useReducedMotion()
-  useIsMobile(768)
-
   return (
     <div className='company-section confused-com-section'>
       <div className='company-header'>

@@ -145,227 +145,56 @@
   }
 }
 
-/* ─── Confused.com ─── */
-.confused-com-section {
-  border-top: 3px solid #2a7de1;
-  background: linear-gradient(135deg, #2a2028 0%, #222838 50%, #1e2d4a 100%);
-  color: #ffffff;
-  flex-direction: row;
-}
-.confused-com-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background: radial-gradient(800px circle at 15% 20%, rgba(42, 125, 225, 0.08), transparent 60%),
-    radial-gradient(800px circle at 85% 80%, rgba(42, 125, 225, 0.05), transparent 60%);
-}
-.confused-com-section .company-header h1,
-.confused-com-section .role-info h2,
-.confused-com-section .achievements li,
-.confused-com-section .tech-used h3,
-.confused-com-section .company-header .location {
-  color: #ffffff;
-}
-.confused-com-section .role-info .dates {
-  color: rgba(255, 255, 255, 0.8);
-}
-.confused-com-section .role-info.earlier-role {
-  border-top-color: rgba(255, 255, 255, 0.25);
-}
-.confused-com-section .tech-tag {
-  background-color: rgba(42, 125, 225, 0.25);
-  color: #7ab4f0;
-  border: 1px solid rgba(42, 125, 225, 0.4);
-}
-.confused-com-section .tech-tag:hover {
-  background-color: #2a7de1;
-  color: white;
-  transform: translateY(-2px);
-  filter: drop-shadow(0 0 8px rgba(42, 125, 225, 0.3));
-}
-
-/* ─── Just Eat Takeaway ─── */
-.just-eat-section {
-  border-top: 3px solid #ff8000;
-  background: linear-gradient(135deg, #2a2028 0%, #3a2818 50%, #4d3010 100%);
-  color: #ffffff;
-  flex-direction: row-reverse;
-}
-.just-eat-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background: radial-gradient(800px circle at 12% 15%, rgba(255, 128, 0, 0.08), transparent 60%),
-    radial-gradient(800px circle at 88% 85%, rgba(255, 128, 0, 0.05), transparent 60%);
-}
-.just-eat-section .company-header h1,
-.just-eat-section .role-info h2,
-.just-eat-section .achievements li,
-.just-eat-section .tech-used h3,
-.just-eat-section .company-header .location {
-  color: #ffffff;
-}
-.just-eat-section .role-info .dates {
-  color: rgba(255, 255, 255, 0.8);
-}
-.just-eat-section .role-info.earlier-role {
-  border-top-color: rgba(255, 255, 255, 0.25);
-}
-.just-eat-section .tech-tag {
-  background-color: rgba(255, 128, 0, 0.25);
-  color: #ffb366;
-  border: 1px solid rgba(255, 128, 0, 0.4);
-}
-.just-eat-section .tech-tag:hover {
-  background-color: #ff8000;
-  color: white;
-  transform: translateY(-2px);
-  filter: drop-shadow(0 0 8px rgba(255, 128, 0, 0.3));
-}
-
-/* ─── Ensono ─── */
-.ensono-section {
-  border-top: 3px solid #523393;
-  background: linear-gradient(135deg, #2a2028 0%, #2a2038 50%, #332650 100%);
-  color: #ffffff;
-  flex-direction: row;
-}
-.ensono-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background: radial-gradient(700px circle at 15% 80%, rgba(82, 51, 147, 0.08), transparent 60%),
-    radial-gradient(700px circle at 85% 20%, rgba(82, 51, 147, 0.06), transparent 60%);
-}
-.ensono-section .company-header h1,
-.ensono-section .role-info h2,
-.ensono-section .achievements li,
-.ensono-section .tech-used h3,
-.ensono-section .company-header .location {
-  color: #ffffff;
-}
-.ensono-section .role-info .dates {
-  color: rgba(255, 255, 255, 0.8);
-}
-.ensono-section .role-info.earlier-role {
-  border-top-color: rgba(255, 255, 255, 0.25);
-}
-.ensono-section .tech-tag {
-  background-color: rgba(82, 51, 147, 0.3);
-  color: #b99de0;
-  border: 1px solid rgba(82, 51, 147, 0.5);
-}
-.ensono-section .tech-tag:hover {
-  background-color: #523393;
-  color: white;
-  transform: translateY(-2px);
-  filter: drop-shadow(0 0 8px rgba(82, 51, 147, 0.3));
-}
-
-/* ─── Tytonical ─── */
-.tytonical-section {
-  border-top: 3px solid #dcbf79;
-  background: linear-gradient(135deg, #2a2028 0%, #2e2820 50%, #3d3525 100%);
-  color: #ffffff;
-  flex-direction: row-reverse;
-}
-.tytonical-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background: radial-gradient(700px circle at 10% 20%, rgba(220, 191, 121, 0.06), transparent 60%),
-    radial-gradient(700px circle at 90% 80%, rgba(220, 191, 121, 0.05), transparent 60%);
-}
-.tytonical-section .company-header h1,
-.tytonical-section .role-info h2,
-.tytonical-section .achievements li,
-.tytonical-section .tech-used h3,
-.tytonical-section .company-header .location {
-  color: #ffffff;
-}
-.tytonical-section .role-info .dates {
-  color: rgba(255, 255, 255, 0.8);
-}
-.tytonical-section .role-info.earlier-role {
-  border-top-color: rgba(255, 255, 255, 0.25);
-}
-.tytonical-section .tech-tag {
-  background-color: rgba(220, 191, 121, 0.2);
-  color: #dcbf79;
-  border: 1px solid rgba(220, 191, 121, 0.4);
-}
-.tytonical-section .tech-tag:hover {
-  background-color: #dcbf79;
-  color: #1a1418;
-  transform: translateY(-2px);
-  filter: drop-shadow(0 0 8px rgba(220, 191, 121, 0.3));
-}
-
-/* ─── Newpark Solutions ─── */
-.newpark-section {
-  border-top: 3px solid #26afe3;
-  background: linear-gradient(135deg, #2a2028 0%, #202830 50%, #1a2e40 100%);
-  color: #ffffff;
-  flex-direction: row;
-}
-.newpark-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background: radial-gradient(800px circle at 18% 25%, rgba(38, 175, 227, 0.07), transparent 60%),
-    radial-gradient(800px circle at 82% 75%, rgba(38, 175, 227, 0.05), transparent 60%);
-}
-.newpark-section .company-header h1,
-.newpark-section .role-info h2,
-.newpark-section .achievements li,
-.newpark-section .tech-used h3,
-.newpark-section .company-header .location {
-  color: #ffffff;
-}
-.newpark-section .role-info .dates {
-  color: rgba(255, 255, 255, 0.8);
-}
-.newpark-section .role-info.earlier-role {
-  border-top-color: rgba(255, 255, 255, 0.25);
-}
-.newpark-section .tech-tag {
-  background-color: rgba(38, 175, 227, 0.2);
-  color: #6ccbee;
-  border: 1px solid rgba(38, 175, 227, 0.4);
-}
-.newpark-section .tech-tag:hover {
-  background-color: #26afe3;
-  color: #1a1418;
-  transform: translateY(-2px);
-  filter: drop-shadow(0 0 8px rgba(38, 175, 227, 0.3));
-}
-
-/* ─── Education (University of South Wales) ─── */
+/* ─── Shared themed section styles ─── */
+.confused-com-section,
+.just-eat-section,
+.ensono-section,
+.tytonical-section,
+.newpark-section,
 .education-section {
-  border-top: 3px solid #c8102e;
-  background: linear-gradient(135deg, #2a2028 0%, #301820 50%, #3d1520 100%);
   color: #ffffff;
-  flex-direction: row-reverse;
+  border-top: 3px solid var(--section-accent);
 }
+
+.confused-com-section::before,
+.just-eat-section::before,
+.ensono-section::before,
+.tytonical-section::before,
+.newpark-section::before,
 .education-section::before {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background: radial-gradient(700px circle at 20% 30%, rgba(200, 16, 46, 0.07), transparent 60%),
-    radial-gradient(700px circle at 80% 70%, rgba(200, 16, 46, 0.05), transparent 60%);
+  background: var(--section-glow);
 }
+
+.confused-com-section .company-header h1,
+.confused-com-section .role-info h2,
+.confused-com-section .achievements li,
+.confused-com-section .tech-used h3,
+.confused-com-section .company-header .location,
+.just-eat-section .company-header h1,
+.just-eat-section .role-info h2,
+.just-eat-section .achievements li,
+.just-eat-section .tech-used h3,
+.just-eat-section .company-header .location,
+.ensono-section .company-header h1,
+.ensono-section .role-info h2,
+.ensono-section .achievements li,
+.ensono-section .tech-used h3,
+.ensono-section .company-header .location,
+.tytonical-section .company-header h1,
+.tytonical-section .role-info h2,
+.tytonical-section .achievements li,
+.tytonical-section .tech-used h3,
+.tytonical-section .company-header .location,
+.newpark-section .company-header h1,
+.newpark-section .role-info h2,
+.newpark-section .achievements li,
+.newpark-section .tech-used h3,
+.newpark-section .company-header .location,
 .education-section .company-header h1,
 .education-section .role-info h2,
 .education-section .achievements li,
@@ -373,19 +202,116 @@
 .education-section .company-header .location {
   color: #ffffff;
 }
+
+.confused-com-section .role-info .dates,
+.just-eat-section .role-info .dates,
+.ensono-section .role-info .dates,
+.tytonical-section .role-info .dates,
+.newpark-section .role-info .dates,
 .education-section .role-info .dates {
   color: rgba(255, 255, 255, 0.8);
 }
-.education-section .tech-tag {
-  background-color: rgba(200, 16, 46, 0.25);
-  color: #f07080;
-  border: 1px solid rgba(200, 16, 46, 0.4);
+
+.confused-com-section .role-info.earlier-role,
+.just-eat-section .role-info.earlier-role,
+.ensono-section .role-info.earlier-role,
+.tytonical-section .role-info.earlier-role,
+.newpark-section .role-info.earlier-role {
+  border-top-color: rgba(255, 255, 255, 0.25);
 }
+
+.confused-com-section .tech-tag,
+.just-eat-section .tech-tag,
+.ensono-section .tech-tag,
+.tytonical-section .tech-tag,
+.newpark-section .tech-tag,
+.education-section .tech-tag {
+  background-color: var(--section-tag-bg);
+  color: var(--section-tag-color);
+  border: 1px solid var(--section-tag-border);
+}
+
+.confused-com-section .tech-tag:hover,
+.just-eat-section .tech-tag:hover,
+.ensono-section .tech-tag:hover,
+.tytonical-section .tech-tag:hover,
+.newpark-section .tech-tag:hover,
 .education-section .tech-tag:hover {
-  background-color: #c8102e;
-  color: white;
+  background-color: var(--section-accent);
+  color: var(--section-tag-hover-color, white);
   transform: translateY(-2px);
-  filter: drop-shadow(0 0 8px rgba(200, 16, 46, 0.3));
+  filter: drop-shadow(0 0 8px var(--section-tag-bg));
+}
+
+/* ─── Per-section custom properties ─── */
+.confused-com-section {
+  --section-accent: #2a7de1;
+  --section-tag-bg: rgba(42, 125, 225, 0.25);
+  --section-tag-color: #7ab4f0;
+  --section-tag-border: rgba(42, 125, 225, 0.4);
+  background: linear-gradient(135deg, #2a2028 0%, #222838 50%, #1e2d4a 100%);
+  flex-direction: row;
+}
+.confused-com-section {
+  --section-glow: radial-gradient(800px circle at 15% 20%, rgba(42, 125, 225, 0.08), transparent 60%),
+    radial-gradient(800px circle at 85% 80%, rgba(42, 125, 225, 0.05), transparent 60%);
+}
+
+.just-eat-section {
+  --section-accent: #ff8000;
+  --section-tag-bg: rgba(255, 128, 0, 0.25);
+  --section-tag-color: #ffb366;
+  --section-tag-border: rgba(255, 128, 0, 0.4);
+  --section-glow: radial-gradient(800px circle at 12% 15%, rgba(255, 128, 0, 0.08), transparent 60%),
+    radial-gradient(800px circle at 88% 85%, rgba(255, 128, 0, 0.05), transparent 60%);
+  background: linear-gradient(135deg, #2a2028 0%, #3a2818 50%, #4d3010 100%);
+  flex-direction: row-reverse;
+}
+
+.ensono-section {
+  --section-accent: #523393;
+  --section-tag-bg: rgba(82, 51, 147, 0.3);
+  --section-tag-color: #b99de0;
+  --section-tag-border: rgba(82, 51, 147, 0.5);
+  --section-glow: radial-gradient(700px circle at 15% 80%, rgba(82, 51, 147, 0.08), transparent 60%),
+    radial-gradient(700px circle at 85% 20%, rgba(82, 51, 147, 0.06), transparent 60%);
+  background: linear-gradient(135deg, #2a2028 0%, #2a2038 50%, #332650 100%);
+  flex-direction: row;
+}
+
+.tytonical-section {
+  --section-accent: #dcbf79;
+  --section-tag-bg: rgba(220, 191, 121, 0.2);
+  --section-tag-color: #dcbf79;
+  --section-tag-border: rgba(220, 191, 121, 0.4);
+  --section-tag-hover-color: #1a1418;
+  --section-glow: radial-gradient(700px circle at 10% 20%, rgba(220, 191, 121, 0.06), transparent 60%),
+    radial-gradient(700px circle at 90% 80%, rgba(220, 191, 121, 0.05), transparent 60%);
+  background: linear-gradient(135deg, #2a2028 0%, #2e2820 50%, #3d3525 100%);
+  flex-direction: row-reverse;
+}
+
+.newpark-section {
+  --section-accent: #26afe3;
+  --section-tag-bg: rgba(38, 175, 227, 0.2);
+  --section-tag-color: #6ccbee;
+  --section-tag-border: rgba(38, 175, 227, 0.4);
+  --section-tag-hover-color: #1a1418;
+  --section-glow: radial-gradient(800px circle at 18% 25%, rgba(38, 175, 227, 0.07), transparent 60%),
+    radial-gradient(800px circle at 82% 75%, rgba(38, 175, 227, 0.05), transparent 60%);
+  background: linear-gradient(135deg, #2a2028 0%, #202830 50%, #1a2e40 100%);
+  flex-direction: row;
+}
+
+.education-section {
+  --section-accent: #c8102e;
+  --section-tag-bg: rgba(200, 16, 46, 0.25);
+  --section-tag-color: #f07080;
+  --section-tag-border: rgba(200, 16, 46, 0.4);
+  --section-glow: radial-gradient(700px circle at 20% 30%, rgba(200, 16, 46, 0.07), transparent 60%),
+    radial-gradient(700px circle at 80% 70%, rgba(200, 16, 46, 0.05), transparent 60%);
+  background: linear-gradient(135deg, #2a2028 0%, #301820 50%, #3d1520 100%);
+  flex-direction: row-reverse;
 }
 
 /* ─── Mobile: stack and reduce gaps ─── */

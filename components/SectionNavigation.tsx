@@ -11,7 +11,8 @@ type SectionNavigationProps = {
 }
 
 const displayNames: Record<string, string> = {
-  'confused-com': 'confused.com',
+  'confused-com': 'Confused.com',
+  'just-eat': 'Just Eat Takeaway',
 }
 
 const getLabel = (section: string): string => displayNames[section] ?? section.replace(/-/g, ' ')

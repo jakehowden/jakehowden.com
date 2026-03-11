@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import useIsMobile from '../../hooks/useIsMobile'
+import useIsMobile, { MOBILE_BREAKPOINT } from '../../hooks/useIsMobile'
 import { getListContainerVariants, getListItemVariants } from '../../animations/variants'
 import './company-section.css'
 
@@ -10,7 +10,9 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 const justEatLogo = `${basePath}/images/justeattakeaway.png`
 
 const JustEatSection: React.FC = () => {
-  const disableAnimations = useReducedMotion() || useIsMobile(768)
+  const prefersReducedMotion = useReducedMotion()
+  const isMobile = useIsMobile(MOBILE_BREAKPOINT)
+  const disableAnimations = prefersReducedMotion || isMobile
   const listContainer = getListContainerVariants(disableAnimations)
   const listItem = getListItemVariants(disableAnimations)
 

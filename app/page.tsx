@@ -2,11 +2,11 @@
 
 import React, { useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import useIsMobile from '../hooks/useIsMobile'
+import useIsMobile, { MOBILE_BREAKPOINT } from '../hooks/useIsMobile'
 import { getSectionVariants } from '../animations/variants'
 import Intro from '../components/intro/Intro'
 import TechStack from '../components/techStack/TechStack'
-import Education from '../components/education/education'
+import Education from '../components/education/Education'
 import JustEatSection from '../components/companies/JustEatSection'
 import EnsonoSection from '../components/companies/EnsonoSection'
 import TytonicalSection from '../components/companies/TytonicalSection'
@@ -19,7 +19,7 @@ import './app.css'
 export default function Home() {
   const [currentSection, setCurrentSection] = useState('intro')
   const prefersReducedMotion = useReducedMotion()
-  const isMobile = useIsMobile(768)
+  const isMobile = useIsMobile(MOBILE_BREAKPOINT)
   const disableAnimations = prefersReducedMotion || isMobile
   const sectionVariants = getSectionVariants(disableAnimations)
 

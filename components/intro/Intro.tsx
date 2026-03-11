@@ -15,7 +15,7 @@ const Intro: React.FC = () => {
           <img src={`${basePath}/images/jake.jpg`} alt='Headshot of Jake Howden' className='Headshot' />
         </div>
 
-        <h2>Software Engineer</h2>
+        <h2>Senior Software Engineer</h2>
 
         <p>Building scalable systems and leading technical delivery</p>
 
