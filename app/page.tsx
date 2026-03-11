@@ -11,6 +11,7 @@ import JustEatSection from '../components/companies/JustEatSection'
 import EnsonoSection from '../components/companies/EnsonoSection'
 import TytonicalSection from '../components/companies/TytonicalSection'
 import NewparkSection from '../components/companies/NewparkSection'
+import ConfusedComSection from '../components/companies/ConfusedComSection'
 import SectionNavigation from '../components/SectionNavigation'
 import FloatingParticles from '../components/FloatingParticles'
 import './app.css'
@@ -22,7 +23,7 @@ export default function Home() {
   const disableAnimations = prefersReducedMotion || isMobile
   const sectionVariants = getSectionVariants(disableAnimations)
 
-  const sections = ['intro', 'tech-stack', 'just-eat', 'ensono', 'tytonical', 'newpark', 'education']
+  const sections = ['intro', 'tech-stack', 'confused-com', 'just-eat', 'ensono', 'tytonical', 'newpark', 'education']
 
   const goToSection = (section: string) => {
     setCurrentSection(section)
@@ -55,6 +56,18 @@ export default function Home() {
             exit='exit'
           >
             <TechStack />
+          </motion.div>
+        )}
+        {currentSection === 'confused-com' && (
+          <motion.div
+            key='confused-com'
+            className='section visible'
+            variants={sectionVariants}
+            initial='hidden'
+            animate='visible'
+            exit='exit'
+          >
+            <ConfusedComSection />
           </motion.div>
         )}
         {currentSection === 'just-eat' && (

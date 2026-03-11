@@ -24,7 +24,7 @@ const JustEatSection: React.FC = () => {
       <div className='company-content'>
         <div className='role-info'>
           <h2>Software Engineer</h2>
-          <p className='dates'>September 2024 Present</p>
+          <p className='dates'>September 2024 — February 2026</p>
         </div>
         <div className='achievements'>
           <motion.ul variants={listContainer} initial='hidden' animate='visible'>

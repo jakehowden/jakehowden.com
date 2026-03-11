@@ -24,7 +24,7 @@ const Education: React.FC = () => {
       <div className='company-content'>
         <div className='role-info'>
           <h2>BSc (Hons) Computer Games Development</h2>
-          <p className='dates'>2018 — 2021</p>
+          <p className='dates'>September 2015 — June 2018</p>
         </div>
         <div className='achievements'>
           <motion.ul variants={listContainer} initial='hidden' animate='visible'>
