@@ -147,8 +147,8 @@
 
 /* ─── Confused.com ─── */
 .confused-com-section {
-  border-top: 3px solid #72bf44;
-  background: linear-gradient(135deg, #2a2028 0%, #2d3a28 50%, #3a5230 100%);
+  border-top: 3px solid #2a7de1;
+  background: linear-gradient(135deg, #2a2028 0%, #222838 50%, #1e2d4a 100%);
   color: #ffffff;
   flex-direction: row;
 }
@@ -158,8 +158,8 @@
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background: radial-gradient(800px circle at 15% 20%, rgba(114, 191, 68, 0.08), transparent 60%),
-    radial-gradient(800px circle at 85% 80%, rgba(114, 191, 68, 0.05), transparent 60%);
+  background: radial-gradient(800px circle at 15% 20%, rgba(42, 125, 225, 0.08), transparent 60%),
+    radial-gradient(800px circle at 85% 80%, rgba(42, 125, 225, 0.05), transparent 60%);
 }
 .confused-com-section .company-header h1,
 .confused-com-section .role-info h2,
@@ -175,15 +175,15 @@
   border-top-color: rgba(255, 255, 255, 0.25);
 }
 .confused-com-section .tech-tag {
-  background-color: rgba(114, 191, 68, 0.25);
-  color: #a8e080;
-  border: 1px solid rgba(114, 191, 68, 0.4);
+  background-color: rgba(42, 125, 225, 0.25);
+  color: #7ab4f0;
+  border: 1px solid rgba(42, 125, 225, 0.4);
 }
 .confused-com-section .tech-tag:hover {
-  background-color: #72bf44;
-  color: #1a1418;
+  background-color: #2a7de1;
+  color: white;
   transform: translateY(-2px);
-  filter: drop-shadow(0 0 8px rgba(114, 191, 68, 0.3));
+  filter: drop-shadow(0 0 8px rgba(42, 125, 225, 0.3));
 }
 
 /* ─── Just Eat Takeaway ─── */

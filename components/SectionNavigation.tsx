@@ -10,6 +10,12 @@ type SectionNavigationProps = {
   onNavigate: (section: string) => void
 }
 
+const displayNames: Record<string, string> = {
+  'confused-com': 'confused.com',
+}
+
+const getLabel = (section: string): string => displayNames[section] ?? section.replace(/-/g, ' ')
+
 const SectionNavigation: React.FC<SectionNavigationProps> = ({ sections, currentSection, onNavigate }) => {
   const currentIndex = useMemo(() => sections.indexOf(currentSection), [sections, currentSection])
   const progress = currentIndex / (sections.length - 1)
@@ -82,11 +88,11 @@ const SectionNavigation: React.FC<SectionNavigationProps> = ({ sections, current
               className={`nav-node ${isActive ? 'nav-node-active' : ''} ${isPast ? 'nav-node-past' : ''}`}
               style={{ left: `${(i / (sections.length - 1)) * 100}%` }}
               onClick={() => onNavigate(section)}
-              aria-label={`Go to ${section.replace(/-/g, ' ')}`}
+              aria-label={`Go to ${getLabel(section)}`}
               aria-current={isActive ? 'step' : undefined}
             >
               <span className='nav-dot' />
-              <span className='nav-label'>{section.replace(/-/g, ' ')}</span>
+              <span className='nav-label'>{getLabel(section)}</span>
             </button>
           )
         })}

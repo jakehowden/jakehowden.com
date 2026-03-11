@@ -21,7 +21,7 @@ type FloatingParticlesProps = {
 const sectionColors: Record<string, string> = {
   intro: '#d4a574',
   'tech-stack': '#b08d6e',
-  'confused-com': '#72bf44',
+  'confused-com': '#2a7de1',
   'just-eat': '#ff8000',
   ensono: '#8b6cc1',
   tytonical: '#dcbf79',
