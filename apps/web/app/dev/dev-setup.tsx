@@ -55,7 +55,7 @@ export function DevSetup() {
                 Mac for work, Windows and Linux at home. One set of dotfiles, set up per machine. Pick your OS.
               </p>
             </div>
-            <a href="#" className="btn">
+            <a href="https://github.com/jakehowden/dotfiles" className="btn">
               dotfiles on GitHub →
             </a>
           </div>
@@ -216,7 +216,7 @@ export function DevSetup() {
             <p className="lead">Mac for work, Windows and Linux at home. Pick your OS.</p>
           </div>
           <a
-            href="#"
+            href="https://github.com/jakehowden/dotfiles"
             className="m-sec"
             style={{ margin: "-16px 0 0", fontFamily: "var(--mono)", fontSize: 13, color: "var(--accent)", textDecoration: "none" }}
           >

@@ -11,7 +11,9 @@ type Props = { params: Promise<{ slug: string }> }
 export const dynamicParams = false
 
 export async function generateStaticParams() {
-  return (await getNotes()).map((n) => ({ slug: n.slug }))
+  const params = (await getNotes()).map((n) => ({ slug: n.slug }))
+  // shortcut: `output: export` rejects an empty list, so with no notes export one slug that 404s; drop once a real note exists
+  return params.length ? params : [{ slug: "_" }]
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

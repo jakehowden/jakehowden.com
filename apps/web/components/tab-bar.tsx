@@ -8,16 +8,6 @@ import { isCurrent } from "@/components/site-header"
 const TABS = [
   ["/", "home", <path key="p" d="M10 2 1 10h3v8h5v-5h2v5h5v-8h3z" />],
   [
-    "/cs2",
-    "cs2",
-    <>
-      <rect x="9" y="1" width="2" height="6" />
-      <rect x="9" y="13" width="2" height="6" />
-      <rect x="1" y="9" width="6" height="2" />
-      <rect x="13" y="9" width="6" height="2" />
-    </>,
-  ],
-  [
     "/dev",
     "dev",
     <>
@@ -32,6 +22,16 @@ const TABS = [
       <path d="M4 1h9l4 4v14H4zm2 2v14h9V6h-3V3z" />
       <rect x="8" y="9" width="5" height="2" />
       <rect x="8" y="13" width="5" height="2" />
+    </>,
+  ],
+  [
+    "/cs2",
+    "cs2",
+    <>
+      <rect x="9" y="1" width="2" height="6" />
+      <rect x="9" y="13" width="2" height="6" />
+      <rect x="1" y="9" width="6" height="2" />
+      <rect x="13" y="9" width="6" height="2" />
     </>,
   ],
   [

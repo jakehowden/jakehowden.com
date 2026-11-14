@@ -10,7 +10,7 @@ export function isCurrent(path: string, href: string) {
   return href === "/" ? path === "/" : path === href || path.startsWith(href + "/")
 }
 
-const NAV = ["cs2", "dev", "cv", "notes"]
+const NAV = ["dev", "cv", "cs2", "notes"]
 
 export function SiteHeader() {
   const path = usePathname()

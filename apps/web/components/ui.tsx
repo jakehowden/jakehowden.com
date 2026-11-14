@@ -57,7 +57,11 @@ export function CopyButton({
       className={className}
       onClick={() => navigator.clipboard.writeText(text).then(() => setCopied(true))}
     >
-      {copied ? "Copied" : children}
+      {/* Both labels share one grid cell so the button keeps the wider width and nothing shifts. */}
+      <span style={{ display: "inline-grid" }}>
+        <span style={{ gridArea: "1/1", visibility: copied ? "hidden" : undefined }}>{children}</span>
+        <span style={{ gridArea: "1/1", visibility: copied ? undefined : "hidden" }}>Copied</span>
+      </span>
     </button>
   )
 }

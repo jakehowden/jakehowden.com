@@ -27,7 +27,8 @@ export const loadNote = (file: string) =>
 export async function getNotes(): Promise<Note[]> {
   const files = fs
     .readdirSync(dir)
-    .filter((f) => f.endsWith(".mdx"))
+    // `_template.mdx` stays unpublished; it also keeps the dynamic import below resolvable with no posts.
+    .filter((f) => f.endsWith(".mdx") && !f.startsWith("_"))
     .map((f) => f.slice(0, -4))
     .sort()
     .reverse()

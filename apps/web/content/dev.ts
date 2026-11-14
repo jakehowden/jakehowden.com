@@ -57,7 +57,7 @@ export const dev: Record<OsId, DevOs> = {
     ],
     steps: [
       { n: "1", what: "Install Homebrew", cmd: '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"' },
-      { n: "2", what: "Clone the dotfiles", cmd: "git clone [dotfiles repo] ~/dotfiles" },
+      { n: "2", what: "Clone the dotfiles", cmd: "git clone https://github.com/jakehowden/dotfiles ~/dotfiles" },
       { n: "3", what: "Install every app and tool", cmd: "brew bundle --file ~/dotfiles/macos/Brewfile" },
       { n: "4", what: "Link the config files", cmd: "~/dotfiles/macos/install.sh" },
     ],
@@ -93,7 +93,7 @@ export const dev: Record<OsId, DevOs> = {
     ],
     steps: [
       { n: "1", what: "Install PowerShell 7 and git", cmd: "winget install Microsoft.PowerShell Git.Git" },
-      { n: "2", what: "Clone the dotfiles", cmd: "git clone [dotfiles repo] $HOME\\dotfiles" },
+      { n: "2", what: "Clone the dotfiles", cmd: "git clone https://github.com/jakehowden/dotfiles $HOME\\dotfiles" },
       { n: "3", what: "Install every app and tool", cmd: "winget import -i $HOME\\dotfiles\\windows\\packages.json" },
       { n: "4", what: "Link the config files", cmd: "& $HOME\\dotfiles\\windows\\install.ps1" },
     ],
@@ -129,7 +129,7 @@ export const dev: Record<OsId, DevOs> = {
     ],
     steps: [
       { n: "1", what: "Install git and zsh", cmd: "sudo apt install -y git zsh" },
-      { n: "2", what: "Clone the dotfiles", cmd: "git clone [dotfiles repo] ~/dotfiles" },
+      { n: "2", what: "Clone the dotfiles", cmd: "git clone https://github.com/jakehowden/dotfiles ~/dotfiles" },
       { n: "3", what: "Install every package", cmd: "xargs -a ~/dotfiles/linux/packages.txt sudo apt install -y" },
       { n: "4", what: "Link the config files", cmd: "~/dotfiles/linux/install.sh" },
     ],

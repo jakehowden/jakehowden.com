@@ -6,9 +6,9 @@ import { Tags, Win } from "@/components/ui"
 import { getNotes } from "@/lib/notes"
 
 const folders = [
-  { name: "cs2", href: "/cs2", text: "Crosshair, autoexec, practice cfg" },
   { name: "dev", href: "/dev", text: "Editor, terminal, dotfiles" },
   { name: "cv", href: "/cv", text: "Experience, skills, PDF download" },
+  { name: "cs2", href: "/cs2", text: "Crosshair, autoexec, practice cfg" },
   { name: "notes", href: "/notes", text: "Write-ups and how-tos" },
 ]
 
@@ -73,6 +73,7 @@ export default async function Page() {
             {notes.map((n) => (
               <NoteRow key={n.slug} n={n} />
             ))}
+            {notes.length === 0 && <div className="row item-text">No notes yet.</div>}
             <div className="win-foot">
               <span>latest {notes.length}</span>
               <Link href="/notes">all notes →</Link>
@@ -118,6 +119,7 @@ export default async function Page() {
               <Link href="/notes">all →</Link>
             </div>
             <div className="m-rail">
+              {notes.length === 0 && <span className="item-text">No notes yet.</span>}
               {notes.map((n) => (
                 <article key={n.slug} className="m-card">
                   <span className="date">{n.date}</span>

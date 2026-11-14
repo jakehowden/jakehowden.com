@@ -34,24 +34,24 @@ export function ColourPicker() {
       <div className="scrim" data-open={open} onClick={() => setOpen(false)}></div>
       <div className="menu" role="menu" aria-label="Colour" data-open={open}>
         <div className="menu-head label">colour</div>
-        {PALETTES.map(([id, label]) => (
-          <button
-            key={id}
-            role="menuitemradio"
-            className="menu-item"
-            aria-checked={palette === id}
-            onClick={() => {
-              setPalette(id)
-              setOpen(false)
-            }}
-          >
-            <span className="sw" data-p={id}></span>
-            <span className="menu-name">{label}</span>
-            <span className="menu-check" aria-hidden="true">
-              ✓
-            </span>
-          </button>
-        ))}
+        <div className="menu-grid">
+          {PALETTES.map(([id, label]) => (
+            <button
+              key={id}
+              role="menuitemradio"
+              className="menu-item"
+              aria-checked={palette === id}
+              aria-label={label}
+              title={label}
+              onClick={() => {
+                setPalette(id)
+                setOpen(false)
+              }}
+            >
+              <span className="sw" data-p={id}></span>
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   )

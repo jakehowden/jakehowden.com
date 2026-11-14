@@ -22,6 +22,7 @@ function Intro() {
 
 export default async function NotesPage() {
   const notes = await getNotes()
+  const empty = notes.length === 0 && <div className="row item-text">No notes yet.</div>
   const foot = (
     <div className="win-foot">
       <span>{notes.length} file(s)</span>
@@ -38,6 +39,7 @@ export default async function NotesPage() {
             {notes.map((n) => (
               <NoteRow key={n.slug} n={n} />
             ))}
+            {empty}
             {foot}
           </Win>
         </main>
@@ -61,6 +63,7 @@ export default async function NotesPage() {
                 <span className="item-text">{n.summary}</span>
               </div>
             ))}
+            {empty}
             {foot}
           </Win>
           <SiteFooter />
