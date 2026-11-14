@@ -124,7 +124,7 @@ html[data-palette=ink][data-theme=dark]{--bg:#151513;--card:#1e1d1a;--fg:#ebe7dc
 .m .win{box-shadow:4px 4px 0 var(--fg)}
 .m .win-body{padding:16px}
 .m .row{padding:14px 16px}
-.m .btn-sm{min-height:40px;padding:6px 12px}
+.m .btn-sm{min-height:44px;min-width:44px;justify-content:center;padding:6px 12px}
 .btn-block{width:100%;justify-content:center;min-height:48px}
 .m-sec{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 12px}
 .m-sec a{font-family:var(--mono);font-size:13px;color:var(--accent);text-decoration:none;padding:10px 0}
