@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      cv_ref:
+        description: "jakehowden/CV commit to build the CV page from (default: main)"
+        required: false
 
 permissions:
   contents: read
@@ -27,11 +31,14 @@ jobs:
 
       - run: npm ci
 
+      - run: npm run test -w web
+
       - id: configure
         uses: actions/configure-pages@v5
 
       - run: npm run build
         env:
+          CV_REF: ${{ inputs.cv_ref }}
           NEXT_PUBLIC_BASE_PATH: ${{ steps.configure.outputs.base_path }}
 
       - uses: actions/upload-pages-artifact@v3
