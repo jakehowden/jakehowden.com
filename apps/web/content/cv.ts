@@ -1,5 +1,5 @@
 // CV content is derived from the LaTeX source in github.com/jakehowden/CV, fetched at build time.
-// shortcut: the site only picks up CV changes when it is rebuilt (push to main or re-run deploy.yml)
+// The CV repo's build triggers deploy.yml with CV_REF = its commit, so a CV push rebuilds the site.
 
 export type Job = { role: string; company: string; place: string; dates: string; bullets: string[] }
 export type Cv = {
@@ -11,7 +11,9 @@ export type Cv = {
   education: { school: string; degree: string; grade: string; dates: string }
 }
 
-const REPO = "https://raw.githubusercontent.com/jakehowden/CV/main/"
+const RAW = "https://raw.githubusercontent.com/jakehowden/CV/"
+// A commit SHA dodges raw.githubusercontent's ~5 min cache of `main`.
+const REPO = `${RAW}${process.env.CV_REF || "main"}/`
 
 /** Drop `%` comments (but not `\%`). */
 const stripComments = (tex: string) => tex.replace(/(?<!\\)%.*$/gm, "")
@@ -47,7 +49,8 @@ export function parseHeader(tex: string) {
       email: one(tex, "email"),
       github: `https://github.com/${github}`,
       linkedin: `https://www.linkedin.com/in/${linkedin}`,
-      pdf: `${REPO}resume_cv.pdf`,
+      // Always main: the CV workflow commits the rebuilt PDF after the source commit.
+      pdf: `${RAW}main/resume_cv.pdf`,
     },
   }
 }
