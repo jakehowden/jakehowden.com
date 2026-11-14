@@ -1,3 +1,4 @@
+import createMDX from "@next/mdx"
 import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
@@ -6,6 +7,7 @@ const nextConfig: NextConfig = {
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
   images: { unoptimized: true },
   transpilePackages: ["@workspace/ui"],
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 }
 
-export default nextConfig
+export default createMDX()(nextConfig)
