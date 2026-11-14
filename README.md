@@ -1,32 +1,31 @@
 # jakehowden.com
 
-Personal portfolio website built with Next.js, React, TypeScript, and Framer Motion. Statically exported and deployed to GitHub Pages.
+Personal indie web site. npm workspaces + Turborepo monorepo.
 
-## Tech Stack
+- `apps/web` — the Next.js site (static export, deployed to GitHub Pages on push to `main`)
+- `packages/ui` — component library built on shadcn/ui (`@workspace/ui`)
+- `packages/eslint-config`, `packages/typescript-config` — shared config
 
-- **Next.js 15** — Static site generation via `output: 'export'`
-- **React 18** — UI components
-- **TypeScript 5** — Type safety
-- **Framer Motion** — Animations and transitions
+The previous CV site lives at the [`v0.1.0` release](https://github.com/jakehowden/jakehowden.com/releases/tag/v0.1.0).
 
-## Getting Started
+## Develop
 
 ```bash
 npm install
-npm run dev
+npm run dev        # http://localhost:3000
+npm run build      # static export to apps/web/out
+npm run lint
+npm run typecheck
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the site locally.
+## Adding shadcn components
 
-## Scripts
+Run from the repo root; components land in `packages/ui/src/components`:
 
-| Command         | Description                        |
-| --------------- | ---------------------------------- |
-| `npm run dev`   | Start the development server       |
-| `npm run build` | Build the static site to `out/`    |
-| `npm run start` | Serve the production build locally |
-| `npm run lint`  | Run ESLint                         |
+```bash
+npx shadcn@latest add card -c apps/web
+```
 
-## Deployment
-
-Pushes to `main` trigger a GitHub Actions workflow that builds the site and deploys it to GitHub Pages.
+```tsx
+import { Button } from "@workspace/ui/components/button"
+```
