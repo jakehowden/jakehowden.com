@@ -1,123 +1,111 @@
-export type Job = {
-  role: string
-  company: string
-  place: string
-  dates: string
-  bullets: readonly string[]
+// CV content is derived from the LaTeX source in github.com/jakehowden/CV, fetched at build time.
+// shortcut: the site only picks up CV changes when it is rebuilt (push to main or re-run deploy.yml)
+
+export type Job = { role: string; company: string; place: string; dates: string; bullets: string[] }
+export type Cv = {
+  headline: string
+  summary: string
+  links: { email: string; github: string; linkedin: string; pdf: string }
+  jobs: Job[]
+  skills: { group: string; tags: string[] }[]
+  education: { school: string; degree: string; grade: string; dates: string }
 }
 
-export const headline = "Senior Software Engineer"
+const REPO = "https://raw.githubusercontent.com/jakehowden/CV/main/"
 
-export const summary =
-  "Cloud-native .NET engineer with 8+ years designing event-driven platforms on AWS and Azure. I have tackled a range of problems, worked with cross-functional teams, and engineered features that improve customer experience and revenue metrics. I have also led teams as a technical lead, mentored developers, and set engineering standards adopted company-wide."
+/** Drop `%` comments (but not `\%`). */
+const stripComments = (tex: string) => tex.replace(/(?<!\\)%.*$/gm, "")
 
-export const links = {
-  email: "jakehowden@gmail.com",
-  github: "https://github.com/jakehowden",
-  linkedin: "https://www.linkedin.com/in/jake-howden",
-  pdf: "https://raw.githubusercontent.com/jakehowden/CV/main/resume_cv.pdf",
+/** LaTeX markup to plain text. */
+export const plain = (s: string) =>
+  s
+    .replace(/\$\\euro\$/g, "€")
+    .replace(/\$\\pounds\$/g, "£")
+    .replace(/\\([%#&$_])/g, "$1")
+    .replace(/--/g, "–")
+    .replace(/\\\\(\[[^\]]*\])?/g, " ")
+    .replace(/\\[a-zA-Z]+(\{(awesome|darktext|graytext|text|lighttext)\})?/g, "")
+    .replace(/[{}~]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+
+function one(tex: string, cmd: string) {
+  const m = tex.match(new RegExp(`\\\\${cmd}\\{([^}]*)\\}`))
+  if (!m) throw new Error(`CV: \\${cmd}{} not found in resume_cv.tex`)
+  return plain(m[1]!)
 }
 
-export const jobs: readonly Job[] = [
-  {
-    role: "Senior Software Engineer",
-    company: "Confused.com (RVU)",
-    place: "Cardiff",
-    dates: "02/2026 – now",
-    bullets: [
-      "As technical lead of 3 engineers, owned the architecture of a new client-facing portal replacing manual account management: AKS behind Cloudflare and App Gateway WAF, with event-driven integration on Event Hubs.",
-      "Averted a second portal build by making the case for folding a legacy internal portal into the new one, aligning four stakeholders one-to-one before the decision; then led the phased migration planning.",
-      "Cut the time to stand up production services from 3 days to 22 minutes by leading the build of a multi-agent AI orchestrator.",
-      "Established a company-wide standard for Architecture Decision Records, with a central site now used by 15+ teams.",
-      "Consolidated divergent CI pipelines into shared GitHub Actions templates now used by 4 teams.",
-      "Drove Claude Code adoption outside engineering, onboarding 18 staff in 3 sessions with a setup guide other guilds reused.",
-    ],
-  },
-  {
-    role: "Software Engineer",
-    company: "Just Eat Takeaway",
-    place: "Bristol",
-    dates: "09/2024 – 02/2026",
-    bullets: [
-      "Engineered and architected an event-driven platform generating €243 million in annual revenue.",
-      "Migrated legacy services from EC2 to Kubernetes (EKS), reducing infrastructure spend by 30%.",
-      "Standardised our messaging framework to eliminate duplicated code and reduce complexity across microservices.",
-      "Integrated E2E test suites into CI/CD pipelines, strengthening release gates and improving service reliability.",
-      "Championed multiple features which improved agent efficiency and customer satisfaction.",
-      "Mentored senior developers transitioning to .NET, offering guidance in engineering and testing best practices.",
-    ],
-  },
-  {
-    role: "Software Consultant",
-    company: "Ensono",
-    place: "Remote",
-    dates: "04/2022 – 07/2024",
-    bullets: [
-      "Successfully delivered a marketing system overhaul for Next PLC, migrating on-prem monoliths to cloud microservices in a £5 million contract.",
-      "Designed and implemented CI/CD pipelines to deploy services to Azure Kubernetes Service.",
-      "Co-led a £1.2 million initiative rebuilding admissions and finance communications for a London university with Azure Functions and Azure Service Bus.",
-      "Applied TDD, automated regression suites, and infrastructure-as-code to sustain high deployment confidence.",
-      "Facilitated stakeholder workshops and roadmap reviews that aligned engineering deliverables with business milestones.",
-    ],
-  },
-  {
-    role: "Backend Developer",
-    company: "Tytonical",
-    place: "Remote",
-    dates: "06/2020 – 04/2022",
-    bullets: [
-      "Owned end-to-end delivery of back-end web APIs and full-stack applications for fintech and media clients.",
-      "Prioritised scalability and high availability when designing AWS ECS deployments, ensuring cost-efficient operations.",
-      "Brokered partner integrations by defining APIs, SLAs, and support processes that kept joint launches on schedule.",
-      "Mentored interns through structured workshops and pair-programming, progressing them to production-ready contributors.",
-    ],
-  },
-  {
-    role: "App Manager",
-    company: "Newpark Solutions",
-    place: "Bristol",
-    dates: "01/2019 – 06/2020",
-    bullets: [
-      "Directed a full redesign of the parking payment app, coordinating product, design, and engineering across release cycles.",
-      "Led customer support and QA teams, instituting feedback loops that tightened defect triage and response times.",
-      "Maintained and extended backend web services to onboard new municipal clients and payment features.",
-      "Raised the app store rating from 1.5–2 to 4+, improving brand perception and retention.",
-    ],
-  },
-  {
-    role: "Software Engineer",
-    company: "Newpark Solutions",
-    place: "Bristol",
-    dates: "06/2018 – 01/2019",
-    bullets: [
-      "Integrated a new payment service provider for in-app payments, improving checkout reliability and compliance.",
-      "Built automated payment services that delivered a frictionless parking experience for customers.",
-    ],
-  },
-]
+// Header fields only: \mobile and \address are deliberately not read (not shown on the site).
+export function parseHeader(tex: string) {
+  tex = stripComments(tex)
+  const github = one(tex, "github")
+  const linkedin = one(tex, "linkedin")
+  return {
+    headline: one(tex, "position"),
+    summary: one(tex, "quote"),
+    links: {
+      email: one(tex, "email"),
+      github: `https://github.com/${github}`,
+      linkedin: `https://www.linkedin.com/in/${linkedin}`,
+      pdf: `${REPO}resume_cv.pdf`,
+    },
+  }
+}
 
-export const skills: readonly { group: string; tags: readonly string[] }[] = [
-  {
-    group: "Programming",
-    tags: ["C# .NET", ".NET Core", "ASP.NET Core", "CosmosDB", "DynamoDB", "PostgreSQL", "TDD", "xUnit", "Kafka", "SQS/SNS", "Service Bus", "Event Hubs"],
-  },
-  {
-    group: "Architecture",
-    tags: ["Cloud", "Microservices", "Event Driven", "Domain-Driven Design", "CQRS", "HTTP", "Messaging", "Architecture Decision Records"],
-  },
-  {
-    group: "DevOps",
-    tags: ["Terraform", "Helm Charts", "Serverless", "CI/CD", "GitHub Actions", "Azure DevOps", "Infrastructure as Code", "ArgoCD"],
-  },
-  {
-    group: "Cloud",
-    tags: ["AWS", "Azure", "Serverless", "Kubernetes (AKS, EKS)", "Docker", "AWS Lambda", "Azure Functions", "Cloudflare"],
-  },
-]
+export function parseExperience(tex: string): Job[] {
+  tex = stripComments(tex)
+  const re =
+    /\\cventry\s*\{([^}]*)\}\s*\{([^}]*)\}\s*\{([^}]*)\}\s*\{([^}]*)\}\s*\{\s*\\begin\{cvitems\}([\s\S]*?)\\end\{cvitems\}/g
+  return [...tex.matchAll(re)].map(([, role, company, place, dates, items]) => ({
+    role: plain(role!),
+    company: plain(company!),
+    place: plain(place!).split(",")[0]!, // "Cardiff, United Kingdom" -> "Cardiff"
+    dates: plain(dates!).replace(/\s*–\s*/, " – "),
+    bullets: items!.split("\\item").slice(1).map(plain),
+  }))
+}
 
-export const education = {
-  school: "University of South Wales",
-  degree: "BSc (Hons) Computer Games Development",
-  grade: "First-Class Honours",
-  dates: "09/2015 – 06/2018",
+export function parseSkills(tex: string) {
+  tex = stripComments(tex)
+  const re = /\\cvskill\s*\{([^}]*)\}\s*\{\\begin\{tabular\}\{[^}]*\{\}[^}]*\{\}\}([\s\S]*?)\\end\{tabular\}/g
+  return [...tex.matchAll(re)].map(([, group, body]) => ({
+    group: plain(group!),
+    // Split on commas and line breaks, but not commas inside "(AKS, EKS)".
+    tags: body!
+      .replace(/\\\\/g, ",")
+      .split(/,(?![^()]*\))/)
+      .map(plain)
+      .filter(Boolean),
+  }))
+}
+
+export function parseEducation(tex: string) {
+  tex = stripComments(tex)
+  const body = tex.match(/\\begin\{cvparagraph\}([\s\S]*?)\\end\{cvparagraph\}/)?.[1]
+  if (!body) throw new Error("CV: no cvparagraph in education.tex")
+  const [school, degree, grade, dates] = body.split(/\\\\\[\d+pt\]/).map(plain)
+  return { school: school!, degree: degree!, grade: grade!, dates: dates!.replace(/\s*–\s*/, " – ") }
+}
+
+async function get(path: string) {
+  const res = await fetch(REPO + path)
+  if (!res.ok) throw new Error(`CV: fetching ${path} failed (${res.status})`)
+  return res.text()
+}
+
+/** Fails the build rather than publishing an empty or partial CV. */
+export async function getCv(): Promise<Cv> {
+  const [main, experience, skills, education] = await Promise.all(
+    ["resume_cv.tex", "cv-sections/experience.tex", "cv-sections/skills.tex", "cv-sections/education.tex"].map(get)
+  )
+  const cv = {
+    ...parseHeader(main!),
+    jobs: parseExperience(experience!),
+    skills: parseSkills(skills!),
+    education: parseEducation(education!),
+  }
+  if (!cv.jobs.length || !cv.skills.length || cv.jobs.some((j) => !j.bullets.length)) {
+    throw new Error("CV: parsed no jobs/skills from the LaTeX; has the CV format changed?")
+  }
+  return cv
 }

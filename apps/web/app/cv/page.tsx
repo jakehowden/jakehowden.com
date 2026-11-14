@@ -3,11 +3,11 @@ import Link from "next/link"
 
 import { SiteFooter } from "@/components/site-footer"
 import { Tags, Win } from "@/components/ui"
-import { education, headline, jobs, links, skills, summary } from "@/content/cv"
+import { type Cv, getCv } from "@/content/cv"
 
 export const metadata: Metadata = { title: "CV" }
 
-const Intro = () => (
+const Intro = ({ headline, summary }: Pick<Cv, "headline" | "summary">) => (
   <>
     <p className="crumb">
       <Link href="/">C:\JAKE\</Link>CV
@@ -17,7 +17,7 @@ const Intro = () => (
   </>
 )
 
-const Skills = ({ gap }: { gap: number }) => (
+const Skills = ({ gap, skills }: { gap: number; skills: Cv["skills"] }) => (
   <Win title="skills">
     <div className="win-body" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
       {skills.map((s) => (
@@ -30,7 +30,7 @@ const Skills = ({ gap }: { gap: number }) => (
   </Win>
 )
 
-const Education = () => (
+const Education = ({ education }: Pick<Cv, "education">) => (
   <Win title="education">
     <div className="win-body" style={{ display: "flex", flexDirection: "column", gap: 4 }}>
       <h3 className="item-title">{education.school}</h3>
@@ -41,14 +41,15 @@ const Education = () => (
   </Win>
 )
 
-export default function CvPage() {
+export default async function CvPage() {
+  const { headline, summary, links, jobs, skills, education } = await getCv()
   return (
     <>
       <div className="d-only">
         <main className="wrap page">
           <div className="intro-row">
             <div className="intro">
-              <Intro />
+              <Intro headline={headline} summary={summary} />
             </div>
           </div>
           <div className="cv-grid">
@@ -59,8 +60,8 @@ export default function CvPage() {
                   style={{ display: "flex", flexDirection: "column", gap: 6, fontFamily: "var(--mono)", fontSize: 14 }}
                 >
                   <a href={`mailto:${links.email}`}>{links.email}</a>
-                  <a href={links.github}>github.com/jakehowden</a>
-                  <a href={links.linkedin}>linkedin/jake-howden</a>
+                  <a href={links.github}>{links.github.replace("https://", "")}</a>
+                  <a href={links.linkedin}>{links.linkedin.replace("https://www.linkedin.com/in/", "linkedin/")}</a>
                   <a
                     className="btn btn-primary"
                     href={links.pdf}
@@ -71,8 +72,8 @@ export default function CvPage() {
                   </a>
                 </div>
               </Win>
-              <Skills gap={6} />
-              <Education />
+              <Skills gap={6} skills={skills} />
+              <Education education={education} />
             </aside>
             <Win title="experience.log">
               {jobs.map((j) => (
@@ -99,7 +100,7 @@ export default function CvPage() {
       <div className="m-only m">
         <main className="m-page">
           <div className="intro">
-            <Intro />
+            <Intro headline={headline} summary={summary} />
           </div>
           <div className="m-actgrid">
             <a className="btn btn-block" href={`mailto:${links.email}`}>
@@ -136,8 +137,8 @@ export default function CvPage() {
               </details>
             ))}
           </Win>
-          <Skills gap={8} />
-          <Education />
+          <Skills gap={8} skills={skills} />
+          <Education education={education} />
           <SiteFooter />
         </main>
       </div>

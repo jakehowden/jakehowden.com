@@ -27,6 +27,8 @@ jobs:
 
       - run: npm ci
 
+      - run: npm run test -w web
+
       - id: configure
         uses: actions/configure-pages@v5
 
