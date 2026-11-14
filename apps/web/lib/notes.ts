@@ -23,6 +23,7 @@ export const loadNote = (file: string) =>
   }>
 
 /** Newest first. Files are named `NN-slug.mdx`; a higher NN is newer (dates are placeholders for now). */
+// shortcut: text sort, so NN must stay two digits; sort by real dates once notes have them
 export async function getNotes(): Promise<Note[]> {
   const files = fs
     .readdirSync(dir)
@@ -33,7 +34,9 @@ export async function getNotes(): Promise<Note[]> {
   return Promise.all(
     files.map(async (file) => {
       const { meta } = await loadNote(file)
-      const words = fs.readFileSync(path.join(dir, `${file}.mdx`), "utf8").split(/\s+/).length
+      // Count body words only: skip the `export const meta = {…}` block.
+      const body = fs.readFileSync(path.join(dir, `${file}.mdx`), "utf8").replace(/^export const meta[\s\S]*?\r?\n}\r?\n/, "")
+      const words = body.split(/\s+/).filter(Boolean).length
       return {
         slug: file.replace(/^\d+-/, ""),
         file,

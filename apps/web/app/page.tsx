@@ -1,5 +1,6 @@
 import Link from "next/link"
 
+import { NoteRow } from "@/components/note-row"
 import { SiteFooter } from "@/components/site-footer"
 import { Tags, Win } from "@/components/ui"
 import { getNotes } from "@/lib/notes"
@@ -70,16 +71,7 @@ export default async function Page() {
           </Win>
           <Win title="notes">
             {notes.map((n) => (
-              <div key={n.slug} className="row note-row">
-                <span className="date">{n.date}</span>
-                <span>
-                  <Link href={`/notes/${n.slug}`} className="stretch item-title" style={{ display: "block" }}>
-                    {n.title}
-                  </Link>
-                  <span className="item-text">{n.summary}</span>
-                </span>
-                <Tags tags={n.tags} />
-              </div>
+              <NoteRow key={n.slug} n={n} />
             ))}
             <div className="win-foot">
               <span>latest {notes.length}</span>

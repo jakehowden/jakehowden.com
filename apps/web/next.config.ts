@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
   output: "export",
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
   images: { unoptimized: true },
-  transpilePackages: ["@workspace/ui"],
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 }
 
