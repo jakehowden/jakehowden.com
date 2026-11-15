@@ -8,31 +8,30 @@ import { CopyButton, FileRow, Sheet, Win } from "@/components/ui"
 import { asset } from "@/lib/asset"
 
 // shortcut: all-configs.zip is built by hand; rebuild it whenever a .cfg changes
-const PREVIEW = `// [file contents]
-bind "mouse4" "+voice"
-alias "+jt" "+jump;-jump"
-...`
+const AUTOEXEC = "alias \"+jumpaction\" \"+jump;\"\nalias \"+throwaction\" \"-attack; -attack2\"\nalias \"-jumpaction\" \"-jump\" \nbind n \"+jumpaction;+throwaction;\" //Bind Key for Jumpthrow"
+
+const PRACTICE = "sv_cheats 1\nmp_limitteams 0;\nmp_autoteambalance 0;\nmp_maxmoney 60000;\nmp_startmoney 60000;\nmp_buytime 9999;\nmp_buy_anywhere 1;\nmp_freezetime 0;\nmp_roundtime 60;\nmp_roundtime_defuse 60;\nmp_respawn_on_death_ct 1;\nmp_respawn_on_death_t 1;\nsv_infinite_ammo 1;\nmp_roundtime_defuse 60\nbind \"capslock\" noclip\nsv_grenade_trajectory 1\nsv_grenade_trajectory_prac_pipreview true\nsv_grenade_trajectory_prac_trailtime 15\nsv_grenade_trajectory_time_spectator 15\nsv_grenade_trajectory_time 15;\nsv_showimpacts 1;\nsv_showimpacts_time 10;\nammo_grenade_limit_total 5;\nbot_kick\ncl_versus_intro false\nmp_team_intro_time 0\nmp_warmup_end;\nmp_restartgame 1"
 
 const CS2 = {
   crosshair: [
-    ["style", "[STYLE]"],
-    ["size", "[SIZE]"],
-    ["gap", "[GAP]"],
-    ["thickness", "[THICKNESS]"],
-    ["outline", "[OUTLINE]"],
-    ["colour", "[COLOUR]"],
+    ["style", "classic static"],
+    ["size", "1"],
+    ["gap", "1"],
+    ["thickness", "1.5"],
+    ["outline", "off"],
+    ["colour", "0 255 165"],
   ],
   shareCode: "[YOUR CROSSHAIR CODE]",
-  launch: "-novid -fullscreen +exec autoexec",
+  launch: "+exec autoexec.cfg",
   settings: [
-    ["sens", "[SENS]"],
-    ["dpi", "[DPI]"],
-    ["res", "[RES]"],
-    ["aspect", "[ASPECT RATIO]"],
+    ["sens", "1.33"],
+    ["dpi", "800"],
+    ["res", "1440×1080"],
+    ["aspect", "4:3 stretched"],
   ],
   files: [
-    { name: "autoexec.cfg", desc: "Binds, rates, HUD. Runs on launch", preview: PREVIEW },
-    { name: "practice.cfg", desc: "Infinite ammo, nade trails, no freezetime", preview: PREVIEW },
+    { name: "autoexec.cfg", desc: "Jumpthrow bind. Runs on launch", preview: AUTOEXEC },
+    { name: "practice.cfg", desc: "Infinite ammo, nade trails, no freezetime", preview: PRACTICE },
   ],
   zip: { name: "all-configs.zip", desc: "Unzip into game/csgo/cfg" },
 }
@@ -52,10 +51,10 @@ function Crosshair({ size, icon }: { size: number; icon: number }) {
       }}
     >
       <svg width={icon} height={icon} viewBox="0 0 40 40" role="img" aria-label="Crosshair preview">
-        <rect x="19" y="6" width="2" height="10" fill="#4dff88" />
-        <rect x="19" y="24" width="2" height="10" fill="#4dff88" />
-        <rect x="6" y="19" width="10" height="2" fill="#4dff88" />
-        <rect x="24" y="19" width="10" height="2" fill="#4dff88" />
+        <rect x="19" y="6" width="2" height="10" fill="#00ffa5" />
+        <rect x="19" y="24" width="2" height="10" fill="#00ffa5" />
+        <rect x="6" y="19" width="10" height="2" fill="#00ffa5" />
+        <rect x="24" y="19" width="10" height="2" fill="#00ffa5" />
       </svg>
     </div>
   )
