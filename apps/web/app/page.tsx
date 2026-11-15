@@ -14,7 +14,7 @@ const folders = [
 
 const changes: { file: string; href?: string; text: string }[] = [
   { file: "dev\\", href: "/dev", text: "New page: editor, terminal and dotfiles" },
-  { file: "cs2\\practice.cfg", href: "/cs2", text: "[What changed]" },
+  { file: "cs2\\practice.cfg", href: "/cs2", text: "Real practice cfg: infinite ammo, nade trails, buy anywhere" },
   { file: "cs2\\", href: "/cs2", text: "New crosshair code" },
   { file: "site", text: "Rebuilt from scratch, old CV archived" },
 ]
