@@ -6,16 +6,18 @@ import { Tags, Win } from "@/components/ui"
 import { getNotes } from "@/lib/notes"
 
 const folders = [
-  { name: "dev", href: "/dev", text: "Editor, terminal, dotfiles" },
-  { name: "cv", href: "/cv", text: "Experience, skills, PDF download" },
-  { name: "cs2", href: "/cs2", text: "Crosshair, autoexec, practice cfg" },
-  { name: "notes", href: "/notes", text: "Write-ups and how-tos" },
+  { name: "dev", href: "/dev", text: "Editor, terminal, dotfiles", date: "2026-11-15" },
+  { name: "cv", href: "/cv", text: "Experience, skills, PDF download", date: "2026-11-14" },
+  { name: "cs2", href: "/cs2", text: "Crosshair, autoexec, practice cfg", date: "2026-11-15" },
+  { name: "notes", href: "/notes", text: "Write-ups and how-tos", date: "2026-11-14" },
 ]
 
 const changes: { file: string; href?: string; text: string }[] = [
-  { file: "dev\\", href: "/dev", text: "New page: editor, terminal and dotfiles" },
+  { file: "dev\\windows", href: "/dev", text: "PowerShell 7 + Starship, komorebi and whkd configs" },
+  { file: "dev\\linux", href: "/dev", text: "Arch + yay, Hyprland, waybar, wofi and Neovim configs" },
+  { file: "cs2\\", href: "/cs2", text: "New crosshair code, preview matches it in game" },
   { file: "cs2\\practice.cfg", href: "/cs2", text: "Real practice cfg: infinite ammo, nade trails, buy anywhere" },
-  { file: "cs2\\", href: "/cs2", text: "New crosshair code" },
+  { file: "cv\\", href: "/cv", text: "CV page built from the LaTeX source" },
   { file: "site", text: "Rebuilt from scratch, old CV archived" },
 ]
 
@@ -61,7 +63,7 @@ export default async function Page() {
                   </Link>
                 </span>
                 <span>{f.text}</span>
-                <span className="meta">[DATE]</span>
+                <span className="meta">{f.date}</span>
               </div>
             ))}
             <div className="win-foot">

@@ -1,0 +1,108 @@
+/* === GENERAL MODULE STYLING === */
+* {
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  margin: 0;
+  font-family: 'CaskaydiaCove Nerd Font', monospace;
+  font-size: 15px;
+  color: #cdd6f4;
+}
+
+window#waybar{
+  background-color: transparent;
+}
+
+/* === GROUP 1: Peripherals (keyboard, mouse, headset) === */
+
+#custom-peripherals {
+  background-color: #374145;
+  color: #e67e80;
+  border: 2px solid #e67e80;
+  margin-left: 4px;
+  margin-right: 8px;
+}
+
+/* === GROUP 2: Usage === */
+#custom-usage {
+  background-color: #374145;
+  color: #e69875;
+  border: 2px solid #e69875;
+  margin-left: 4px;
+  margin-right: 8px;
+}
+
+/* === GROUP 3: Hyprland === */
+
+#window,
+#workspaces {
+  background-color: #374145;
+  color: #dbbc7f;
+  border: 2px solid #dbbc7f;
+  border-radius: 8px 0 0 8px; /* Start with rounded left */
+  margin: 0;
+  padding: 0 6px;
+}
+
+#window {
+  background-color: #dbbc7f;
+  color: #374145;  
+  border-radius: 0 8px 8px 0;
+  border-left: none;
+  padding-left: 0;
+}
+
+#workspaces button {
+  padding: 0 1px;
+  margin: 0 1px;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* === GROUP 4: System (audio_switcher, battery, pulseaudio, network) === */
+#custom-audio_switcher,
+#battery,
+#pulseaudio,
+#network  {
+  background-color: #374145;
+  color: #a7c080;
+  border: 2px solid #a7c080;
+  margin-left: 4px;
+  margin-right: 8px;
+}
+
+/* === Group 5: Clock and Time === */
+#clock,
+#custom-time {
+  border-top: 2px solid #7fbbb3;
+  border-bottom: 2px solid #7fbbb3;
+  border-radius: 0;
+}
+
+#clock {
+  background-color: #374145;
+  color: #7fbbb3;
+  border-left: 2px solid #7fbbb3;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  margin-left: 4px;
+}
+
+#custom-time {
+  background-color: #7fbbb3;
+  color: #374145;
+  border-right: 2px solid #7fbbb3;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  margin-right: 8px;
+}
+
+/* === Group 6: Power === */
+#custom-power{
+  border: 2px solid #83c092;
+  background-color: #374145;
+  color: #83c092;
+  margin-left: 4px;
+  margin-right: 8px;
+} 
