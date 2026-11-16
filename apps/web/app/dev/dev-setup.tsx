@@ -5,8 +5,10 @@ import * as React from "react"
 
 import { SiteFooter } from "@/components/site-footer"
 import { CopyButton, FileRow, Sheet, Tags, Win } from "@/components/ui"
-import { dev, OS_IDS, tools, type DevFile, type DevOs, type OsId } from "@/content/dev"
+import { OS_IDS, tools, type DevFile, type DevOs, type OsId } from "@/content/dev"
 import { asset } from "@/lib/asset"
+
+export type PreviewedOs = Omit<DevOs, "files"> & { files: (DevFile & { preview: string })[] }
 
 const fileUrl = (os: DevOs, f: DevFile) => asset(`/dev/${os.dir}/${f.path ?? f.name}`)
 const zipUrl = (os: DevOs) => asset(`/dev/${os.zip}`)
@@ -26,7 +28,7 @@ const Extras = ({ os }: { os: DevOs }) => (
 
 const flexCol =(gap: number): React.CSSProperties => ({ display: "flex", flexDirection: "column", gap })
 
-export function DevSetup() {
+export function DevSetup({ dev }: { dev: Record<OsId, PreviewedOs> }) {
   const [osId, setOsId] = React.useState<OsId>("mac")
   const [view, setView] = React.useState(0)
   const [sheet, setSheet] = React.useState<number | null>(null)
@@ -48,7 +50,7 @@ export function DevSetup() {
           <div className="intro-row">
             <div className="intro">
               <p className="crumb">
-                <Link href="/">C:\JAKE\</Link>DEV · updated [DATE]
+                <Link href="/">C:\JAKE\</Link>DEV · updated 2026-11-15
               </p>
               <h1 className="title">Dev setup</h1>
               <p className="lead">

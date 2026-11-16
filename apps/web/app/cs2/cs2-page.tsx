@@ -14,15 +14,15 @@ const PRACTICE = "sv_cheats 1\nmp_limitteams 0;\nmp_autoteambalance 0;\nmp_maxmo
 
 const CS2 = {
   crosshair: [
-    ["style", "classic static"],
-    ["size", "1"],
+    ["style", "static cross"],
+    ["length", "3"],
     ["gap", "1"],
-    ["thickness", "1.5"],
+    ["thickness", "2"],
     ["outline", "off"],
     ["colour", "0 255 165"],
   ],
-  shareCode: "[YOUR CROSSHAIR CODE]",
-  launch: "+exec autoexec.cfg",
+  shareCode: "CS9SLfPJuRDaCzuuSeUobmKMyonNYSkc8zORQ9KVSojiyE",
+  launch: "-novid +exec autoexec.cfg",
   settings: [
     ["sens", "1.33"],
     ["dpi", "800"],
@@ -50,11 +50,20 @@ function Crosshair({ size, icon }: { size: number; icon: number }) {
         border: "1.5px solid var(--fg)",
       }}
     >
-      <svg width={icon} height={icon} viewBox="0 0 40 40" role="img" aria-label="Crosshair preview">
-        <rect x="19" y="6" width="2" height="10" fill="#00ffa5" />
-        <rect x="19" y="24" width="2" height="10" fill="#00ffa5" />
-        <rect x="6" y="19" width="10" height="2" fill="#00ffa5" />
-        <rect x="24" y="19" width="10" height="2" fill="#00ffa5" />
+      {/* Units are in-game pixels at 1080p (thickness 2, gap 1, length 3), stretched 4:3 → 16:9 like on my screen */}
+      <svg
+        width={(icon * 4) / 3}
+        height={icon}
+        viewBox="-5 -5 10 10"
+        preserveAspectRatio="none"
+        shapeRendering="crispEdges"
+        role="img"
+        aria-label="Crosshair preview"
+      >
+        <rect x="-1" y="-4" width="2" height="3" fill="#00ffa5" />
+        <rect x="-1" y="1" width="2" height="3" fill="#00ffa5" />
+        <rect x="-4" y="-1" width="3" height="2" fill="#00ffa5" />
+        <rect x="1" y="-1" width="3" height="2" fill="#00ffa5" />
       </svg>
     </div>
   )
@@ -83,7 +92,7 @@ export function Cs2Page() {
         <div className="intro-row">
           <div className="intro">
             <p className="crumb">
-              <Link href="/">C:\JAKE\</Link>CS2 · updated [DATE]
+              <Link href="/">C:\JAKE\</Link>CS2 · updated 2026-11-15
             </p>
             <h1 className="title">CS2 config</h1>
             <p className="lead">My crosshair, configs and settings. Grab whatever’s useful.</p>

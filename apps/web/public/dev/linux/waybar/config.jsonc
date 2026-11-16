@@ -1,0 +1,77 @@
+{
+  "position": "top",
+  "modules-left": ["custom/peripherals", "custom/usage"],
+  "modules-center": ["hyprland/workspaces", "hyprland/window"],
+  "modules-right": ["custom/audio_switcher", "battery", "pulseaudio", "network", "clock", "custom/time", "custom/power"],
+  "clock": {
+    "format": "  {:%a %b %d}"
+  },
+  "network": {
+    "format-ethernet": "",
+    "format-wifi": "󰖩",
+    "format-disconnected": "<span color='#e67e80'></span>"
+  },
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-muted": " ",
+    "format-icons": {
+      "default": ["", "", ""]
+    },
+    "on-click": "pavucontrol"
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "<span size='13000' foreground='#a6e3a1'>{icon} </span> {capacity}%",
+    "format-warning": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {capacity}%",
+    "format-critical": "<span size='13000' foreground='#E38C8F'>{icon} </span> {capacity}%",
+    "format-charging": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format-plugged": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format-alt": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {time}",
+    "format-full": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip-format": "{time}"
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+        "active": "<span color='#dbbc7f'>●</span>",
+        "default": "<span color='#dbbc7f'>○</span>",
+        "urgent": "<span color='#dbbc7f'>◉</span>"
+    },
+    "persistent_workspaces": {
+        "*": 5
+    },
+    "all-outputs": true
+  },
+  "hyprland/window": {
+    "format": "<span color='#374145'>{}</span>"
+  },
+  "custom/time": {
+    "format": "{}",
+    "interval": 60,
+    "exec": "$HOME/.config/waybar/scripts/time.sh",
+  },
+  "custom/usage": {
+    "exec": "$HOME/.config/waybar/scripts/usage.sh",
+    "format": "{}",
+    "interval": 5
+  },
+  "custom/audio_switcher": {
+    "exec": "$HOME/.config/waybar/scripts/audio_switch.sh",
+    "format": "{}",
+    "on-click": "$HOME/.config/waybar/scripts/audio_switch.sh",
+    "signal": 10
+  },
+  "custom/peripherals": {
+    "exec": "$HOME/.config/waybar/scripts/peripherals.sh",
+    "format": "{}",
+    "interval": 60
+  },
+  "custom/power": {
+    "on-click": "nwg-bar",
+    "format": "⏻"
+  }
+}
