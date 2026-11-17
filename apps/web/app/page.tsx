@@ -3,23 +3,32 @@ import Link from "next/link"
 import { NoteRow } from "@/components/note-row"
 import { SiteFooter } from "@/components/site-footer"
 import { Tags, Win } from "@/components/ui"
+import { cvModified, latest, modified, sectionPaths } from "@/lib/modified"
 import { getNotes } from "@/lib/notes"
 
-const folders = [
-  { name: "dev", href: "/dev", text: "Editor, terminal, dotfiles", date: "2026-11-15" },
-  { name: "cv", href: "/cv", text: "Experience, skills, PDF download", date: "2026-11-14" },
-  { name: "cs2", href: "/cs2", text: "Crosshair, autoexec, practice cfg", date: "2026-11-15" },
-  { name: "notes", href: "/notes", text: "Write-ups and how-tos", date: "2026-11-14" },
-]
+// Text is hand-written; dates come from git (lib/modified.ts), so they can't go stale.
+function getChanges(cvDate: string) {
+  const changes: { file: string; href?: string; text: string; date: string }[] = [
+    { file: "dev\\windows", href: "/dev", text: "PowerShell 7 + Starship, komorebi and whkd configs", date: modified(["public/dev/windows"]) },
+    { file: "dev\\linux", href: "/dev", text: "Arch + yay, Hyprland, waybar, wofi and Neovim configs", date: modified(["public/dev/linux"]) },
+    { file: "cs2\autoexec.cfg", href: "/cs2", text: "Real autoexec: crosshair, sens, viewmodel, radar and binds; dead jumpthrow bind gone", date: modified(["public/cs2/autoexec.cfg"]) },
+    { file: "cs2\\", href: "/cs2", text: "New crosshair code, preview matches it in game", date: modified(["app/cs2/cs2-page.tsx"]) },
+    { file: "cs2\\practice.cfg", href: "/cs2", text: "Real practice cfg: infinite ammo, nade trails, buy anywhere", date: modified(["public/cs2/practice.cfg"]) },
+    { file: "cv\\", href: "/cv", text: "CV page built from the LaTeX source", date: latest(modified(sectionPaths.cv), cvDate) },
+    { file: "site", text: "Rebuilt from scratch, old CV archived", date: modified(["app/layout.tsx"], { added: true }) },
+  ]
+  // Stable sort: same-day entries keep the order above.
+  return changes.sort((a, b) => b.date.localeCompare(a.date))
+}
 
-const changes: { file: string; href?: string; text: string }[] = [
-  { file: "dev\\windows", href: "/dev", text: "PowerShell 7 + Starship, komorebi and whkd configs" },
-  { file: "dev\\linux", href: "/dev", text: "Arch + yay, Hyprland, waybar, wofi and Neovim configs" },
-  { file: "cs2\\", href: "/cs2", text: "New crosshair code, preview matches it in game" },
-  { file: "cs2\\practice.cfg", href: "/cs2", text: "Real practice cfg: infinite ammo, nade trails, buy anywhere" },
-  { file: "cv\\", href: "/cv", text: "CV page built from the LaTeX source" },
-  { file: "site", text: "Rebuilt from scratch, old CV archived" },
-]
+function getFolders(cvDate: string) {
+  return [
+    { name: "dev", href: "/dev", text: "Editor, terminal, dotfiles", date: modified(sectionPaths.dev) },
+    { name: "cv", href: "/cv", text: "Experience, skills, PDF download", date: latest(modified(sectionPaths.cv), cvDate) },
+    { name: "cs2", href: "/cs2", text: "Crosshair, autoexec, practice cfg", date: modified(sectionPaths.cs2) },
+    { name: "notes", href: "/notes", text: "Write-ups and how-tos", date: modified(sectionPaths.notes) },
+  ]
+}
 
 const Folder = () => (
   <svg width="22" height="18" viewBox="0 0 22 18" aria-hidden="true">
@@ -41,6 +50,9 @@ function Intro({ cmd }: { cmd: string }) {
 
 export default async function Page() {
   const notes = (await getNotes()).slice(0, 3)
+  const cvDate = await cvModified()
+  const changes = getChanges(cvDate)
+  const folders = getFolders(cvDate)
   return (
     <>
       <div className="d-only">
@@ -92,6 +104,7 @@ export default async function Page() {
                   <span className="file">{c.file}</span>
                 )}
                 <span>{c.text}</span>
+                <span className="meta">{c.date}</span>
               </div>
             ))}
           </Win>
@@ -137,8 +150,11 @@ export default async function Page() {
           <Win title="changes.log">
             {changes.map((c) => (
               <div key={c.file} className="row">
-                <div className="file" style={{ color: "var(--accent)", fontSize: 14 }}>
-                  {c.file}
+                <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
+                  <span className="file" style={{ color: "var(--accent)", fontSize: 14 }}>
+                    {c.file}
+                  </span>
+                  <span className="meta">{c.date}</span>
                 </div>
                 <div className="item-text">{c.text}</div>
               </div>

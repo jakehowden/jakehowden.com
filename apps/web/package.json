@@ -10,7 +10,7 @@
     "lint": "eslint",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit",
-    "test": "node --test content/*.test.ts"
+    "test": "node --test content/*.test.ts lib/*.test.ts"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

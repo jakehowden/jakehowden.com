@@ -28,7 +28,7 @@ const Extras = ({ os }: { os: DevOs }) => (
 
 const flexCol =(gap: number): React.CSSProperties => ({ display: "flex", flexDirection: "column", gap })
 
-export function DevSetup({ dev }: { dev: Record<OsId, PreviewedOs> }) {
+export function DevSetup({ dev, updated }: { dev: Record<OsId, PreviewedOs>; updated: string }) {
   const [osId, setOsId] = React.useState<OsId>("mac")
   const [view, setView] = React.useState(0)
   const [sheet, setSheet] = React.useState<number | null>(null)
@@ -50,7 +50,7 @@ export function DevSetup({ dev }: { dev: Record<OsId, PreviewedOs> }) {
           <div className="intro-row">
             <div className="intro">
               <p className="crumb">
-                <Link href="/">C:\JAKE\</Link>DEV · updated 2026-11-15
+                <Link href="/">C:\JAKE\</Link>DEV · updated {updated}
               </p>
               <h1 className="title">Dev setup</h1>
               <p className="lead">

@@ -4,6 +4,7 @@ import path from "node:path"
 import type { Metadata } from "next"
 
 import { dev, OS_IDS } from "@/content/dev"
+import { modified, sectionPaths } from "@/lib/modified"
 
 import { DevSetup, type PreviewedOs } from "./dev-setup"
 
@@ -20,5 +21,5 @@ export default function Page() {
       return [id, { ...os, files: os.files.map((f) => ({ ...f, preview: read(os.dir, f.path ?? f.name) })) }]
     }),
   ) as Record<(typeof OS_IDS)[number], PreviewedOs>
-  return <DevSetup dev={withPreviews} />
+  return <DevSetup dev={withPreviews} updated={modified(sectionPaths.dev)} />
 }

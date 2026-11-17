@@ -8,9 +8,6 @@ import { CopyButton, FileRow, Sheet, Win } from "@/components/ui"
 import { asset } from "@/lib/asset"
 
 // shortcut: all-configs.zip is built by hand; rebuild it whenever a .cfg changes
-const AUTOEXEC = "alias \"+jumpaction\" \"+jump;\"\nalias \"+throwaction\" \"-attack; -attack2\"\nalias \"-jumpaction\" \"-jump\" \nbind n \"+jumpaction;+throwaction;\" //Bind Key for Jumpthrow"
-
-const PRACTICE = "sv_cheats 1\nmp_limitteams 0;\nmp_autoteambalance 0;\nmp_maxmoney 60000;\nmp_startmoney 60000;\nmp_buytime 9999;\nmp_buy_anywhere 1;\nmp_freezetime 0;\nmp_roundtime 60;\nmp_roundtime_defuse 60;\nmp_respawn_on_death_ct 1;\nmp_respawn_on_death_t 1;\nsv_infinite_ammo 1;\nmp_roundtime_defuse 60\nbind \"capslock\" noclip\nsv_grenade_trajectory 1\nsv_grenade_trajectory_prac_pipreview true\nsv_grenade_trajectory_prac_trailtime 15\nsv_grenade_trajectory_time_spectator 15\nsv_grenade_trajectory_time 15;\nsv_showimpacts 1;\nsv_showimpacts_time 10;\nammo_grenade_limit_total 5;\nbot_kick\ncl_versus_intro false\nmp_team_intro_time 0\nmp_warmup_end;\nmp_restartgame 1"
 
 const CS2 = {
   crosshair: [
@@ -30,8 +27,8 @@ const CS2 = {
     ["aspect", "4:3 stretched"],
   ],
   files: [
-    { name: "autoexec.cfg", desc: "Jumpthrow bind. Runs on launch", preview: AUTOEXEC },
-    { name: "practice.cfg", desc: "Infinite ammo, nade trails, no freezetime", preview: PRACTICE },
+    { name: "autoexec.cfg", desc: "Crosshair, sens, viewmodel, radar, binds. Runs on launch" },
+    { name: "practice.cfg", desc: "Infinite ammo, nade trails, no freezetime" },
   ],
   zip: { name: "all-configs.zip", desc: "Unzip into game/csgo/cfg" },
 }
@@ -81,8 +78,11 @@ function KV({ items, className }: { items: string[][]; className?: string }) {
 const col = { display: "flex", flexDirection: "column", gap: 16 } as const
 const field = { display: "flex", flexDirection: "column", gap: 6 } as const
 
-export function Cs2Page() {
-  const [sheet, setSheet] = React.useState<(typeof CS2.files)[number] | null>(null)
+type Cs2File = (typeof CS2.files)[number] & { preview: string }
+
+export function Cs2Page({ updated, previews }: { updated: string; previews: Record<string, string> }) {
+  const files: Cs2File[] = CS2.files.map((f) => ({ ...f, preview: previews[f.name]! }))
+  const [sheet, setSheet] = React.useState<Cs2File | null>(null)
   const close = React.useCallback(() => setSheet(null), [])
   const [view, setView] = React.useState<string | null>(null)
 
@@ -92,7 +92,7 @@ export function Cs2Page() {
         <div className="intro-row">
           <div className="intro">
             <p className="crumb">
-              <Link href="/">C:\JAKE\</Link>CS2 · updated 2026-11-15
+              <Link href="/">C:\JAKE\</Link>CS2 · updated {updated}
             </p>
             <h1 className="title">CS2 config</h1>
             <p className="lead">My crosshair, configs and settings. Grab whatever’s useful.</p>
@@ -139,7 +139,7 @@ export function Cs2Page() {
           </Win>
         </div>
         <Win title="cfg files">
-          {CS2.files.map((f) => (
+          {files.map((f) => (
             <React.Fragment key={f.name}>
               <FileRow name={f.name} desc={f.desc}>
                 {/* Inline preview: Pages serves .cfg as a download, so a link can't show it. */}
@@ -217,7 +217,7 @@ export function Cs2Page() {
             </div>
           </section>
           <Win title="cfg files">
-            {CS2.files.map((f) => (
+            {files.map((f) => (
               <FileRow key={f.name} name={f.name} desc={f.desc}>
                 <button className="btn btn-sm" onClick={() => setSheet(f)}>
                   View
@@ -239,7 +239,7 @@ export function Cs2Page() {
           <span className="meta">
             {CS2.zip.name}
             <br />
-            {CS2.files.length} files
+            {files.length} files
           </span>
           <a className="btn btn-primary" href={href(CS2.zip.name)} download>
             Download all
