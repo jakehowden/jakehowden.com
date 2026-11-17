@@ -37,8 +37,15 @@ a{color:var(--fg)}a:hover{color:var(--accent)}
 .win-bar .ctl{display:flex;gap:12px;font-family:var(--mono)}.win-bar .ctl a{color:var(--accent-on-dark);text-decoration:none}
 .win-bar .ctl button{background:none;border:0;padding:0 2px;margin:-2px 0;color:inherit;font:inherit;font-size:15px;line-height:1;cursor:pointer}
 .win-bar .ctl button:hover,.win-bar .ctl button:focus-visible{color:var(--accent-on-dark)}
-.win-max{position:fixed;z-index:50;top:50%;left:50%;transform:translate(-50%,-50%);width:min(1100px,calc(100vw - 32px));max-height:calc(100dvh - 48px);overflow:auto;box-sizing:border-box}
+/* Width, max-height and zoom are set inline by <Win> from the window's own size. */
+.win-max{position:fixed;z-index:50;inset:0;margin:auto;height:fit-content;overflow:auto;box-sizing:border-box;transform-origin:top left}
 .win-max>.win-bar{position:sticky;top:0;z-index:1}
+/* □ and × share one grid cell and swap with a fade + quarter turn, timed with the window animation. */
+.win-toggle{display:inline-grid;place-items:center}
+.win-toggle>span{grid-area:1/1;transition:opacity .24s cubic-bezier(.2,.8,.2,1),transform .24s cubic-bezier(.2,.8,.2,1)}
+.win-toggle>span:last-child{font-size:17px}
+.win-toggle[data-x=false]>span:last-child,.win-toggle[data-x=true]>span:first-child{opacity:0;transform:rotate(90deg) scale(.6)}
+@media (prefers-reduced-motion:reduce){.win-toggle>span{transition:none}}
 .scrim.win-scrim{z-index:45;background:rgba(0,0,0,.45)}
 /* Sticky makes a stacking context; lift it so an enlarged window inside sits above the page. */
 .cv-aside:has(.win-max){z-index:50}
