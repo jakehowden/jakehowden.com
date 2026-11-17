@@ -35,6 +35,13 @@ a{color:var(--fg)}a:hover{color:var(--accent)}
 .win-bar{background:var(--fg);color:var(--card);padding:6px 12px;display:flex;justify-content:space-between;gap:12px;font-family:var(--pixel);font-size:13px}
 .win-bar h2{margin:0;font-weight:400;font-size:inherit}
 .win-bar .ctl{display:flex;gap:12px;font-family:var(--mono)}.win-bar .ctl a{color:var(--accent-on-dark);text-decoration:none}
+.win-bar .ctl button{background:none;border:0;padding:0 2px;margin:-2px 0;color:inherit;font:inherit;font-size:15px;line-height:1;cursor:pointer}
+.win-bar .ctl button:hover,.win-bar .ctl button:focus-visible{color:var(--accent-on-dark)}
+.win-max{position:fixed;z-index:50;top:50%;left:50%;transform:translate(-50%,-50%);width:min(1100px,calc(100vw - 32px));max-height:calc(100dvh - 48px);overflow:auto;box-sizing:border-box}
+.win-max>.win-bar{position:sticky;top:0;z-index:1}
+.scrim.win-scrim{z-index:45;background:rgba(0,0,0,.45)}
+/* Sticky makes a stacking context; lift it so an enlarged window inside sits above the page. */
+.cv-aside:has(.win-max){z-index:50}
 .win-body{padding:20px}
 .win-foot{border-top:1.5px solid var(--fg);padding:10px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-family:var(--mono);font-size:13px;color:var(--muted)}
 .win-foot a{color:var(--accent);text-decoration:none}
